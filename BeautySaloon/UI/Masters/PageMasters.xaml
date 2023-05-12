@@ -1,0 +1,36 @@
+﻿<Page x:Class="BeautySaloon.UI.Masters.PageMasters"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BeautySaloon.UI.Masters"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMasters">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Добавить" Margin="0 0 10 0" Padding="10" Command="{Binding Path=AddCommand}" />
+            <Button Content="Удалить" Margin="0 0 10 0" Padding="10" Command="{Binding Path=DeleteCommand}" />
+            <Button Content="Редактировать" Margin="0 0 10 0" Padding="10" Command="{Binding Path=EditCommand}" />
+        </StackPanel>
+        <DataGrid Grid.Row="1" Margin="10"
+                  ItemsSource="{Binding Path=Masters}"
+                  SelectedItem="{Binding Path=SelectedMaster}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Width="100"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn Header="Примечание" Binding="{Binding Path=Note}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Назад" Margin="10" Padding="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

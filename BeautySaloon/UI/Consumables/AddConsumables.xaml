@@ -1,0 +1,47 @@
+﻿<Window x:Class="BeautySaloon.UI.Consumables.AddConsumables"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeautySaloon.UI.Consumables"
+        mc:Ignorable="d"
+         Title="Добавить расходный материал" Height="200" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Тип:" />
+        <ComboBox Grid.Row="0" Grid.Column="1" Name="TypeComboBox" 
+                  ItemsSource="{Binding Path=Types}" DisplayMemberPath="Name" 
+                  SelectedValuePath="ID" SelectedValue="{Binding Path=Type_ID}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Модель:" />
+        <TextBox Grid.Row="1" Grid.Column="1" Name="ModelTextBox" 
+                 Text="{Binding Path=Model, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Бренд:" />
+        <TextBox Grid.Row="2" Grid.Column="1" Name="BrandTextBox" 
+                 Text="{Binding Path=Brand, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Количество:" />
+        <TextBox Grid.Row="3" Grid.Column="1" Name="QuantityTextBox" 
+                 Text="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Добавить" Margin="5" Padding="10" Width="100" 
+                    Command="{Binding Path=AddCommand}" />
+            <Button Content="Отмена" Margin="5" Padding="10" Width="100" 
+                    Command="{Binding Path=CancelCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,47 @@
+﻿<Page x:Class="BeautySaloon.UI.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BeautySaloon.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="AddRecord_Button" Content="Добавить запись" Margin="10" Padding="10" Click="AddRecord_Button_Click" />
+            <Button Name="DeleteRecord_Button" Content="Удалить запись" Margin="10" Padding="10" Click="DeleteRecord_Button_Click" />
+            <Button Name="Editrecord_Button" Content="Редактировать запись" Margin="10" Padding="10" Click="Editrecord_Button_Click" />
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="1" Name="RecordLogDataGrid" ItemsSource="{Binding Record_Log}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" />
+                <DataGridTextColumn Header="Время" Binding="{Binding Time}" />
+                <DataGridTextColumn Header="ID клиента/услуги" Binding="{Binding Client_Service_ID}" />
+                <DataGridTextColumn Header="ID мастера" Binding="{Binding Master_ID}" />
+                <DataGridTextColumn Header="Тип оплаты" Binding="{Binding Payment_Type}" />
+                <DataGridTextColumn Header="Стоимость материалов" Binding="{Binding Material_Cost}" />
+                <DataGridTextColumn Header="Примечание" Binding="{Binding Note}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки навигации -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="Consumables_Button" Content="Материалы" Margin="10" Padding="10" Click="Consumables_Button_Click" />
+            <Button Name="Services_Button" Content="Список услуг" Margin="10" Padding="10" Click="Services_Button_Click" />
+            <Button Name="Clients_Button" Content="Клиенты" Margin="10" Padding="10" Click="Clients_Button_Click" />
+            <Button Name="Masters_Button" Content="Мастера" Margin="10" Padding="10" Click="Masters_Button_Click" />
+            <Button Name="Salarys_Button" Content="Зарплаты" Margin="10" Padding="10" Click="Salarys_Button_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

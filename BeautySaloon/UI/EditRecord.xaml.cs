@@ -29,24 +29,33 @@ namespace BeautySaloon.UI
         {
             record = _record;
             InitializeComponent();
+            PaymentTypeComboBox.Items.Add("Cash");
+            PaymentTypeComboBox.Items.Add("Debit Card");
             Init();
         }
 
         // инициализация полей и текстбоксов
         private void Init()
         {
-            Client_Services client_Services = new Client_Services();
-            client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
+            try
+            {
+                Client_Services client_Services = new Client_Services();
+                client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
 
-            IdTextBox.Text = record.ID.ToString();
-            ClientIdTextBox.Text = client_Services.Client_ID.ToString();
-            ServiceIdTextBox.Text = client_Services.Service_ID.ToString();
-            MasterIdTextBox.Text = record.Master_ID.ToString();
-            DateDatePicker.Text = record.Date.ToString();
-            TimeTextBox.Text = record.Time.ToString();
-            PaymentTypeTextBox.Text = record.Payment_Type.ToString();
-            MaterialCostTextBox.Text = record.Material_Cost.ToString();
-            NoteTextBox.Text = record.Note.ToString();
+                IdTextBox.Text = record.ID.ToString();
+                ClientIdTextBox.Text = client_Services.Client_ID.ToString();
+                ServiceIdTextBox.Text = client_Services.Service_ID.ToString();
+                MasterIdTextBox.Text = record.Master_ID.ToString();
+                DateDatePicker.Text = record.Date.ToString();
+                TimeTextBox.Text = record.Time.ToString();
+                PaymentTypeComboBox.SelectedValue = record.Payment_Type.ToString();
+                MaterialCostTextBox.Text = record.Material_Cost.ToString();
+                NoteTextBox.Text = record.Note.ToString();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // редактирвание записи
@@ -62,7 +71,7 @@ namespace BeautySaloon.UI
                 client_Services.Service_ID = int.Parse(ServiceIdTextBox.Text);
                 record.Date = DateTime.Parse(DateDatePicker.Text);
                 record.Time = TimeSpan.Parse(TimeTextBox.Text);
-                record.Payment_Type = PaymentTypeTextBox.Text;
+                record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
                 record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                 record.Note = NoteTextBox.Text;
                 // сохранение изменений

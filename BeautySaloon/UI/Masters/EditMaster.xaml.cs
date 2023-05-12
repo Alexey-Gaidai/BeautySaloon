@@ -16,30 +16,40 @@ using System.Windows.Shapes;
 namespace BeautySaloon.UI.Masters
 {
     /// <summary>
-    /// Логика взаимодействия для AddMaster.xaml
+    /// Логика взаимодействия для EditMaster.xaml
     /// </summary>
-    public partial class AddMaster : Window
+    public partial class EditMaster : Window
     {
-        public AddMaster()
+        private Data.Masters master;
+        public EditMaster()
         {
             InitializeComponent();
+            Init();
+        }
+
+        public EditMaster(Data.Masters _master)
+        {
+            InitializeComponent();
+            master = _master;
+            Init();
+        }
+
+        private void Init()
+        {
+            IDTextBox.Text = master.ID.ToString();
+            NameTextBox.Text = master.Name;
+            NoteTextBox.Text = master.Note;
         }
 
         private void AddMaster_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // создание новой услуги
-                Data.Masters master = new Data.Masters
-                {
-                    Name = NameTextBox.Text,
-                    Note = NoteTextBox.Text
-                };
-                // добавление услуги в базу данных
-                AppConnect.SaloonDB.Masters.Add(master);
+                Data.Masters master = AppConnect.SaloonDB.Masters.Find(int.Parse(IDTextBox.Text));
+                master.Name =  NameTextBox.Text;
+                master.Note = NoteTextBox.Text;
                 AppConnect.SaloonDB.SaveChanges();
-                // закрытие окна
-                DialogResult = true;
+                this.DialogResult = true;
             }
             catch (Exception ex)
             {

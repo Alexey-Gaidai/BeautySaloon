@@ -27,7 +27,8 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
                 <DataGridTextColumn Header="Дата" Binding="{Binding Date}" />
                 <DataGridTextColumn Header="Время" Binding="{Binding Time}" />
-                <DataGridTextColumn Header="ID клиента/услуги" Binding="{Binding Client_Service_ID}" />
+                <DataGridTextColumn Header="ID клиента" Binding="{Binding Client_Services.Client_ID}" />
+                <DataGridTextColumn Header="ID Услуги" Binding="{Binding Client_Services.Service_ID}" />
                 <DataGridTextColumn Header="ID мастера" Binding="{Binding Master_ID}" />
                 <DataGridTextColumn Header="Тип оплаты" Binding="{Binding Payment_Type}" />
                 <DataGridTextColumn Header="Стоимость материалов" Binding="{Binding Material_Cost}" />

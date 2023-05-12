@@ -70,6 +70,9 @@
     <Compile Include="UI\Clients\AddClient.xaml.cs">
       <DependentUpon>AddClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Clients\EditClient.xaml.cs">
+      <DependentUpon>EditClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Clients\PageClients.xaml.cs">
       <DependentUpon>PageClients.xaml</DependentUpon>
     </Compile>
@@ -88,11 +91,17 @@
     <Compile Include="UI\Masters\AddMaster.xaml.cs">
       <DependentUpon>AddMaster.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Masters\EditMaster.xaml.cs">
+      <DependentUpon>EditMaster.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Masters\PageMasters.xaml.cs">
       <DependentUpon>PageMasters.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Services\AddService.xaml.cs">
       <DependentUpon>AddService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Services\EditService.xaml.cs">
+      <DependentUpon>EditService.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Services\PageServices.xaml.cs">
       <DependentUpon>PageServices.xaml</DependentUpon>
@@ -161,6 +170,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Clients\EditClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Clients\PageClients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,11 +198,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Masters\EditMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Masters\PageMasters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Services\AddService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Services\EditService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Clients"
         mc:Ignorable="d"
-        Title="AddClient" Height="160" Width="350">
+        Title="AddClient" Height="200" Width="350">
     <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -13,17 +13,17 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Имя:" />
+        <Label Grid.Row="0" Grid.Column="0" Content="ID:" />
+        <TextBox Grid.Row="0" Grid.Column="1" Name="IDTextBox" IsEnabled="False"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Имя:" />
             <TextBox Grid.Row="1" Grid.Column="1" Name="NameTextBox" />
 
             <Label Grid.Row="2" Grid.Column="0" Content="Номер телефона:" />
@@ -33,8 +33,8 @@
             <TextBox Grid.Row="3" Grid.Column="1" Name="NoteTextBox" />
 
             <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Добавить" Margin="5" Padding="10" Width="100"/>
-                <Button Content="Отменить" Margin="5" Padding="10" Width="100"/>
+                <Button Name="EditClient_Button" Content="Сохранить" Margin="5" Padding="10" Width="100"/>
+                <Button Name="Cancel_Button" Content="Отменить" Margin="5" Padding="10" Width="100"/>
             </StackPanel>
         </Grid>
 </Window>

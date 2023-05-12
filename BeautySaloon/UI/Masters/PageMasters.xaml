@@ -15,22 +15,21 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Добавить" Margin="0 0 10 0" Padding="10" Command="{Binding Path=AddCommand}" />
-            <Button Content="Удалить" Margin="0 0 10 0" Padding="10" Command="{Binding Path=DeleteCommand}" />
-            <Button Content="Редактировать" Margin="0 0 10 0" Padding="10" Command="{Binding Path=EditCommand}" />
+            <Button Name="MastersAdd_Button" Content="Добавить" Margin="0 0 10 0" Padding="10" Click="MastersAdd_Button_Click"/>
+            <Button Name="MastersDelete_Button" Content="Удалить" Margin="0 0 10 0" Padding="10" Click="MastersDelete_Button_Click" />
+            <Button Name="MastersEdit_Button" Content="Редактировать" Margin="0 0 10 0" Padding="10" Click="MastersEdit_Button_Click" />
         </StackPanel>
-        <DataGrid Grid.Row="1" Margin="10"
-                  ItemsSource="{Binding Path=Masters}"
-                  SelectedItem="{Binding Path=SelectedMaster}"
+        <DataGrid Grid.Row="1" Margin="10" x:Name="MastersDataGrid"
+                  ItemsSource="{Binding Masters}"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Width="100"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="*"/>
-                <DataGridTextColumn Header="Примечание" Binding="{Binding Path=Note}" Width="*"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="100"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Примечание" Binding="{Binding Note}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Назад" Margin="10" Padding="10"/>
+            <Button Content="Назад" Margin="10" Padding="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Page>

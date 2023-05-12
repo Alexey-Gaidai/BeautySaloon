@@ -25,6 +25,9 @@ namespace BeautySaloon.UI
         public AddRecord()
         {
             InitializeComponent();
+            PaymentTypeComboBox.Items.Add("Cash");
+            PaymentTypeComboBox.Items.Add("Debit Card");
+            PaymentTypeComboBox.SelectedValue = PaymentTypeComboBox.Items[0];
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,7 +46,7 @@ namespace BeautySaloon.UI
                 record.Time = TimeSpan.Parse(TimeTextBox.Text);
                 record.Client_Service_ID = clientServices.ID;
                 record.Master_ID = Convert.ToInt32(MasterIdTextBox.Text);
-                record.Payment_Type = PaymentTypeTextBox.Text;
+                record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
                 record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                 record.Note = NoteTextBox.Text;
                 AppConnect.SaloonDB.Record_Log.Add(record);

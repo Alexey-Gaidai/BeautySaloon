@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeautySaloon.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,33 @@ namespace BeautySaloon.UI.Services
         public AddService()
         {
             InitializeComponent();
+        }
+
+        private void AddService_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // создание новой услуги
+                Data.Services service = new Data.Services()
+                {
+                    Service_Name = NameTextBox.Text,
+                    Service_Cost = Convert.ToDecimal(CostTextBox.Text)
+                };
+                // добавление услуги в базу данных
+                AppConnect.SaloonDB.Services.Add(service);
+                AppConnect.SaloonDB.SaveChanges();
+                // закрытие окна
+                DialogResult = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }

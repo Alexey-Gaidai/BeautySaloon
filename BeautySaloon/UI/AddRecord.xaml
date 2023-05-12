@@ -41,7 +41,7 @@
         <TextBox Grid.Row="5" Grid.Column="1" Name="MasterIdTextBox" />
 
         <Label Grid.Row="6" Grid.Column="0" Content="Тип оплаты:" />
-        <TextBox Grid.Row="6" Grid.Column="1" Name="PaymentTypeTextBox" />
+        <ComboBox Grid.Row="6" Grid.Column="1" Name="PaymentTypeComboBox" />
 
         <Label Grid.Row="7" Grid.Column="0" Content="Стоимость материалов:" />
         <TextBox Grid.Row="7" Grid.Column="1" Name="MaterialCostTextBox" />

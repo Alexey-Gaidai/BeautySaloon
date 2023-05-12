@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BeautySaloon.Data;
+using BeautySaloon.UI.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,102 @@ namespace BeautySaloon.UI.Masters
         public PageMasters()
         {
             InitializeComponent();
+            LoadMasters();
+        }
+
+        private void LoadMasters()
+        {
+            try
+            {
+                MastersDataGrid.ItemsSource = AppConnect.SaloonDB.Masters.ToList();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.frameMain.GoBack();
+        }
+
+        private void MastersDelete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // поиск записи по id
+                int id;
+                if (MastersDataGrid.SelectedItems.Count != 0 && MastersDataGrid.SelectedItems.Count < 2)
+                {
+                    id = (MastersDataGrid.SelectedItem as Data.Masters).ID;
+                }
+                else
+                {
+                    MessageBox.Show("Выберите мастера!");
+                    return;
+                }
+                var master = AppConnect.SaloonDB.Masters.Find(id);
+                // удаление записи из базы данных
+                AppConnect.SaloonDB.Masters.Remove(master);
+                AppConnect.SaloonDB.SaveChanges();
+                // обновление data grid view
+                LoadMasters();
+                MessageBox.Show("Удалено!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void MastersAdd_Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddMaster addMaster = new AddMaster();
+            bool? result = addMaster.ShowDialog();
+
+            if (result == true)
+            {
+                MessageBox.Show("Добавлено!");
+                // обновление data grid view
+                LoadMasters();
+            }
+            else
+            {
+                MessageBox.Show("Не добавлено!");
+            }
+        }
+
+        private void MastersEdit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Data.Masters selectedMaster = (Data.Masters)MastersDataGrid.SelectedItem;
+                // проверка на выбор услуги
+                if (selectedMaster == null)
+                {
+                    MessageBox.Show("Выберите услугу!");
+                    return;
+                }
+                // открытие окна редактирования услуги
+                EditMaster editMaster = new EditMaster(selectedMaster);
+                bool? result = editMaster.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Изменено!");
+                    // обновление data grid view
+                    LoadMasters();
+                }
+                else
+                {
+                    MessageBox.Show("Не изменено!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

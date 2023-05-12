@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Clients"
         mc:Ignorable="d"
-        Title="EditClient" Height="450" Width="800">
-    <Grid>
-        
+               Title="Редактировать клиента" Height="200" Width="350">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="ID:" />
+        <TextBox Grid.Row="0" Grid.Column="1" Name="IDTextBox" IsEnabled="False"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Имя:" />
+        <TextBox Grid.Row="1" Grid.Column="1" Name="NameTextBox" />
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Номер телефона:" />
+        <TextBox Grid.Row="2" Grid.Column="1" Name="PhoneNumberTextBox" />
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Примечание:" />
+        <TextBox Grid.Row="3" Grid.Column="1" Name="NoteTextBox" />
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="EditClient_Button" Content="Сохранить" Margin="5" Padding="10" Width="100" Click="EditClient_Button_Click"/>
+            <Button Name="Cancel_Button" Content="Отменить" Margin="5" Padding="10" Width="100" Click="Cancel_Button_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

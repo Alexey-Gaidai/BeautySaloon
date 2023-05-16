@@ -23,7 +23,6 @@ namespace BeautySaloon.Data
         public int ID { get; set; }
         public int Client_ID { get; set; }
         public int Service_ID { get; set; }
-        public string Note { get; set; }
     
         public virtual Clients Clients { get; set; }
         public virtual Services Services { get; set; }

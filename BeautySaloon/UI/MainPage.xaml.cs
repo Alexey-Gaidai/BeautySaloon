@@ -2,6 +2,7 @@
 using BeautySaloon.UI.Clients;
 using BeautySaloon.UI.Consumables;
 using BeautySaloon.UI.Masters;
+using BeautySaloon.UI.Salary;
 using BeautySaloon.UI.Services;
 using System;
 using System.Collections.Generic;
@@ -141,7 +142,7 @@ namespace BeautySaloon.UI
 
         private void Salarys_Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            AppFrame.frameMain.Navigate(new PageSalary());
         }
     }
 }

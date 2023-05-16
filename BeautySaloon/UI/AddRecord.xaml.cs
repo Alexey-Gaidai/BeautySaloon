@@ -36,12 +36,14 @@ namespace BeautySaloon.UI
             {
                 Record_Log record = new Record_Log();
                 Client_Services clientServices = new Client_Services();
+                Data.Salary salary = new Data.Salary();
 
                 clientServices.Client_ID = Convert.ToInt32(ClientIdTextBox.Text);
                 clientServices.Service_ID = Convert.ToInt32(ServiceIdTextBox.Text);
                 AppConnect.SaloonDB.Client_Services.Add(clientServices);
                 AppConnect.SaloonDB.SaveChanges();
                 MessageBox.Show(clientServices.ID.ToString());
+                
                 record.Date = DateDatePicker.SelectedDate.Value;
                 record.Time = TimeSpan.Parse(TimeTextBox.Text);
                 record.Client_Service_ID = clientServices.ID;
@@ -51,6 +53,22 @@ namespace BeautySaloon.UI
                 record.Note = NoteTextBox.Text;
                 AppConnect.SaloonDB.Record_Log.Add(record);
                 AppConnect.SaloonDB.SaveChanges();
+                
+
+                salary.Master_ID = Convert.ToInt32(MasterIdTextBox.Text);
+                salary.Date = DateDatePicker.SelectedDate.Value;
+                salary.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
+                decimal cost = AppConnect.SaloonDB.Services.Where(x => x.ID == clientServices.Service_ID).Select(x => x.Service_Cost).FirstOrDefault();
+                decimal revenue = cost - decimal.Parse(MaterialCostTextBox.Text);
+                decimal masterSalary = revenue * 0.3m;
+                decimal saloonRevenue = revenue - masterSalary;
+                salary.Service_ID = clientServices.Service_ID;
+                salary.Master_Salary = masterSalary;
+                salary.Salon_Revenue = saloonRevenue;
+
+                AppConnect.SaloonDB.Salary.Add(salary);
+                AppConnect.SaloonDB.SaveChanges();
+                
                 this.DialogResult = true;
             }
             catch (Exception ex)

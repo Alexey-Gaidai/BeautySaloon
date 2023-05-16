@@ -10,19 +10,13 @@
 namespace BeautySaloon.Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Salary
+    public partial class sp_helpdiagrams_Result
     {
+        public string Database { get; set; }
+        public string Name { get; set; }
         public int ID { get; set; }
-        public int Master_ID { get; set; }
-        public System.DateTime Date { get; set; }
-        public int Service_ID { get; set; }
-        public decimal Material_Cost { get; set; }
-        public decimal Master_Salary { get; set; }
-        public decimal Salon_Revenue { get; set; }
-    
-        public virtual Masters Masters { get; set; }
-        public virtual Services Services { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

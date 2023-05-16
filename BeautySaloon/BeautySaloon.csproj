@@ -64,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UI\AddRecord.xaml.cs">
       <DependentUpon>AddRecord.xaml</DependentUpon>
     </Compile>
@@ -106,6 +112,10 @@
     <Compile Include="UI\Masters\PageMasters.xaml.cs">
       <DependentUpon>PageMasters.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Salary\PageSalary.xaml.cs">
+      <DependentUpon>PageSalary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Salary\Salaries.cs" />
     <Compile Include="UI\Services\AddService.xaml.cs">
       <DependentUpon>AddService.xaml</DependentUpon>
     </Compile>
@@ -224,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Masters\PageMasters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Salary\PageSalary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

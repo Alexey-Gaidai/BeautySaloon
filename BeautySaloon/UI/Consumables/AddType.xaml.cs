@@ -16,33 +16,26 @@ using System.Windows.Shapes;
 namespace BeautySaloon.UI.Consumables
 {
     /// <summary>
-    /// Логика взаимодействия для AddConsumables.xaml
+    /// Логика взаимодействия для AddType.xaml
     /// </summary>
-    public partial class AddConsumables : Window
+    public partial class AddType : Window
     {
-        List<Data.Consumable_Type> types;
-        public AddConsumables()
+        public AddType()
         {
             InitializeComponent();
-            types = AppConnect.SaloonDB.Consumable_Type.ToList();
-            TypeComboBox.ItemsSource = types;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddType_Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // создание новой услуги
-                Data.Consumables consumable = new Data.Consumables
+                Data.Consumable_Type type = new Data.Consumable_Type
                 {
-                    Type_ID = types.Find(t => t.Name == TypeComboBox.Text).ID,
-                    Model = ModelTextBox.Text,
-                    Brand = BrandTextBox.Text,
-                    Quantity = Convert.ToInt32(QuantityTextBox.Text),
-                    Date_Added = DateTime.Now,
+                    Name = typeNameTextBox.Text,
                 };
                 // добавление услуги в базу данных
-                AppConnect.SaloonDB.Consumables.Add(consumable);
+                AppConnect.SaloonDB.Consumable_Type.Add(type);
                 AppConnect.SaloonDB.SaveChanges();
                 // закрытие окна
                 DialogResult = true;
@@ -53,7 +46,7 @@ namespace BeautySaloon.UI.Consumables
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }

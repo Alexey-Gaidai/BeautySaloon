@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeautySaloon.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,34 @@ namespace BeautySaloon.UI.Clients
         public AddClient()
         {
             InitializeComponent();
+        }
+
+        private void AddClient_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // создание новой услуги
+                Data.Clients client = new Data.Clients()
+                {
+                    Name = NameTextBox.Text,
+                    Phone_Number = PhoneNumberTextBox.Text,
+                    Note = NoteTextBox.Text
+                };
+                // добавление услуги в базу данных
+                AppConnect.SaloonDB.Clients.Add(client);
+                AppConnect.SaloonDB.SaveChanges();
+                // закрытие окна
+                DialogResult = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
         }
     }
 }

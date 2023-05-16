@@ -31,6 +31,7 @@ namespace BeautySaloon.UI.Services
         {
             try
             {
+                ServicesDataGrid.CanUserAddRows = false;
                 ServicesDataGrid.ItemsSource = AppConnect.SaloonDB.Services.ToList();
             }
             catch (Exception ex)

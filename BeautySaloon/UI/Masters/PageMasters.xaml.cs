@@ -32,6 +32,7 @@ namespace BeautySaloon.UI.Masters
         {
             try
             {
+                MastersDataGrid.CanUserAddRows = false;
                 MastersDataGrid.ItemsSource = AppConnect.SaloonDB.Masters.ToList();
             }
             catch(Exception ex)

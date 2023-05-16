@@ -1,5 +1,10 @@
 ﻿using BeautySaloon.Data;
 using BeautySaloon.UI;
+using BeautySaloon.UI.Clients;
+using BeautySaloon.UI.Consumables;
+using BeautySaloon.UI.Masters;
+using BeautySaloon.UI.Salary;
+using BeautySaloon.UI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +37,30 @@ namespace BeautySaloon
 
         private void FrmMain_Navigated(object sender, NavigationEventArgs e)
         {
-
+            if (e.Content is PageSalary)
+            {
+                programTitle.Text = "Зарплаты мастеров";
+            }
+            else if (e.Content is PageClients)
+            {
+                programTitle.Text = "Наши клиенты";
+            }
+            else if (e.Content is PageServices)
+            {
+                programTitle.Text = "Наши услуги";
+            }
+            else if (e.Content is PageConsumables)
+            {
+                programTitle.Text = "Материалы для работы";
+            }
+            else if (e.Content is PageMasters)
+            {
+                programTitle.Text = "Мастера";
+            }
+            else
+            {
+                programTitle.Text = "Салон красоты";
+            }
         }
     }
 }

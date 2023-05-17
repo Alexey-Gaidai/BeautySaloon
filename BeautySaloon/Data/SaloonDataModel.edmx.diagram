@@ -21,6 +21,7 @@
         <AssociationConnector Association="BeautySaloonModel.FK__Record_Lo__Maste__6A30C649" ManuallyRouted="false" />
         <AssociationConnector Association="BeautySaloonModel.FK__Salary__Master_I__6E01572D" ManuallyRouted="false" />
         <AssociationConnector Association="BeautySaloonModel.FK__Salary__Service___6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -94,9 +94,10 @@ namespace BeautySaloon.UI
                     salary.Master_ID = selectedMaster.ID;
                     salary.Date = DateDatePicker.SelectedDate.Value;
                     salary.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
+                    salary.Record_ID = record.ID;
                     decimal cost = AppConnect.SaloonDB.Services.Where(x => x.ID == clientServices.Service_ID).Select(x => x.Service_Cost).FirstOrDefault();
                     decimal revenue = cost - decimal.Parse(MaterialCostTextBox.Text);
-                    decimal masterSalary = revenue * 0.3m;
+                    decimal masterSalary = revenue * 0.5m;
                     decimal saloonRevenue = revenue - masterSalary;
                     salary.Service_ID = clientServices.Service_ID;
                     salary.Master_Salary = masterSalary;

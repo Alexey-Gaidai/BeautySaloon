@@ -113,7 +113,7 @@ namespace BeautySaloon.UI
                 int id;
                 if (RecordLogDataGrid.SelectedItems.Count != 0 && RecordLogDataGrid.SelectedItems.Count < 2)
                 {
-                    id = (RecordLogDataGrid.SelectedItem as Record_Log).ID;
+                    id = (RecordLogDataGrid.SelectedItem as Records).ID;
                 }
                 else
                 {
@@ -121,7 +121,9 @@ namespace BeautySaloon.UI
                     return;
                 }
                 var record = AppConnect.SaloonDB.Record_Log.Find(id);
+                var salary = AppConnect.SaloonDB.Salary.Where(s => s.Record_ID == record.ID).FirstOrDefault();
                 // удаление записи из базы данных
+                AppConnect.SaloonDB.Salary.Remove(salary);
                 AppConnect.SaloonDB.Record_Log.Remove(record);
                 AppConnect.SaloonDB.SaveChanges();
                 // обновление data grid view

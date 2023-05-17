@@ -14,6 +14,12 @@ namespace BeautySaloon.Data
     
     public partial class Record_Log
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Record_Log()
+        {
+            this.Salary = new HashSet<Salary>();
+        }
+    
         public int ID { get; set; }
         public System.DateTime Date { get; set; }
         public System.TimeSpan Time { get; set; }
@@ -25,5 +31,7 @@ namespace BeautySaloon.Data
     
         public virtual Client_Services Client_Services { get; set; }
         public virtual Masters Masters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Salary> Salary { get; set; }
     }
 }

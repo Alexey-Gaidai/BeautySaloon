@@ -66,9 +66,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Master_ID" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Master_ID" Type="int" Nullable="false" />
           <Property Name="Service_ID" Type="int" Nullable="false" />
+          <Property Name="Record_ID" Type="int" Nullable="false" />
           <Property Name="Material_Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Master_Salary" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Salon_Revenue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
@@ -91,7 +92,7 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK__Client_Se__Clien__0D7A0286">
+        <Association Name="FK__Client_Se__Clien__236943A5">
           <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -103,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client_Se__Servi__0E6E26BF">
+        <Association Name="FK__Client_Se__Servi__245D67DE">
           <End Role="Services" Type="Self.Services" Multiplicity="1" />
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -115,7 +116,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Consumabl__Type___04E4BC85">
+        <Association Name="FK__Consumabl__Type___1AD3FDA4">
           <End Role="Consumable_Type" Type="Self.Consumable_Type" Multiplicity="1" />
           <End Role="Consumables" Type="Self.Consumables" Multiplicity="*" />
           <ReferentialConstraint>
@@ -127,7 +128,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Record_Lo__Clien__114A936A">
+        <Association Name="FK__Record_Lo__Clien__2739D489">
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="1" />
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -139,7 +140,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Record_Lo__Maste__123EB7A3">
+        <Association Name="FK__Record_Lo__Maste__282DF8C2">
           <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -151,7 +152,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Salary__Master_I__160F4887">
+        <Association Name="FK__Salary__Master_I__2BFE89A6">
           <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
           <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,7 +164,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Salary__Service___151B244E">
+        <Association Name="FK__Salary__Record_I__2CF2ADDF">
+          <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="1" />
+          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record_Log">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="Record_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Salary__Service___2B0A656D">
           <End Role="Services" Type="Self.Services" Multiplicity="1" />
           <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,31 +229,35 @@
           <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Client_Se__Clien__0D7A0286" Association="Self.FK__Client_Se__Clien__0D7A0286">
+          <AssociationSet Name="FK__Client_Se__Clien__236943A5" Association="Self.FK__Client_Se__Clien__236943A5">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Client_Services" EntitySet="Client_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client_Se__Servi__0E6E26BF" Association="Self.FK__Client_Se__Servi__0E6E26BF">
+          <AssociationSet Name="FK__Client_Se__Servi__245D67DE" Association="Self.FK__Client_Se__Servi__245D67DE">
             <End Role="Services" EntitySet="Services" />
             <End Role="Client_Services" EntitySet="Client_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__Consumabl__Type___04E4BC85" Association="Self.FK__Consumabl__Type___04E4BC85">
+          <AssociationSet Name="FK__Consumabl__Type___1AD3FDA4" Association="Self.FK__Consumabl__Type___1AD3FDA4">
             <End Role="Consumable_Type" EntitySet="Consumable_Type" />
             <End Role="Consumables" EntitySet="Consumables" />
           </AssociationSet>
-          <AssociationSet Name="FK__Record_Lo__Clien__114A936A" Association="Self.FK__Record_Lo__Clien__114A936A">
+          <AssociationSet Name="FK__Record_Lo__Clien__2739D489" Association="Self.FK__Record_Lo__Clien__2739D489">
             <End Role="Client_Services" EntitySet="Client_Services" />
             <End Role="Record_Log" EntitySet="Record_Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Record_Lo__Maste__123EB7A3" Association="Self.FK__Record_Lo__Maste__123EB7A3">
+          <AssociationSet Name="FK__Record_Lo__Maste__282DF8C2" Association="Self.FK__Record_Lo__Maste__282DF8C2">
             <End Role="Masters" EntitySet="Masters" />
             <End Role="Record_Log" EntitySet="Record_Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Master_I__160F4887" Association="Self.FK__Salary__Master_I__160F4887">
+          <AssociationSet Name="FK__Salary__Master_I__2BFE89A6" Association="Self.FK__Salary__Master_I__2BFE89A6">
             <End Role="Masters" EntitySet="Masters" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Service___151B244E" Association="Self.FK__Salary__Service___151B244E">
+          <AssociationSet Name="FK__Salary__Record_I__2CF2ADDF" Association="Self.FK__Salary__Record_I__2CF2ADDF">
+            <End Role="Record_Log" EntitySet="Record_Log" />
+            <End Role="Salary" EntitySet="Salary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Salary__Service___2B0A656D" Association="Self.FK__Salary__Service___2B0A656D">
             <End Role="Services" EntitySet="Services" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
@@ -314,6 +331,7 @@
           <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Client_Services" Relationship="Self.FK__Record_Lo__Clien__693CA210" FromRole="Record_Log" ToRole="Client_Services" />
           <NavigationProperty Name="Masters" Relationship="Self.FK__Record_Lo__Maste__6A30C649" FromRole="Record_Log" ToRole="Masters" />
+          <NavigationProperty Name="Salary" Relationship="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF" FromRole="Record_Log" ToRole="Salary" />
         </EntityType>
         <EntityType Name="Salary">
           <Key>
@@ -328,6 +346,8 @@
           <Property Name="Salon_Revenue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <NavigationProperty Name="Masters" Relationship="Self.FK__Salary__Master_I__6E01572D" FromRole="Salary" ToRole="Masters" />
           <NavigationProperty Name="Services" Relationship="Self.FK__Salary__Service___6D0D32F4" FromRole="Salary" ToRole="Services" />
+          <Property Name="Record_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Record_Log" Relationship="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF" FromRole="Salary" ToRole="Record_Log" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -501,6 +521,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK__Salary__Record_I__2CF2ADDF" Association="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF">
+            <End Role="Record_Log" EntitySet="Record_Log" />
+            <End Role="Salary" EntitySet="Salary" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -513,6 +537,18 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK__Salary__Record_I__2CF2ADDF">
+          <End Type="BeautySaloonModel.Record_Log" Role="Record_Log" Multiplicity="1" />
+          <End Type="BeautySaloonModel.Salary" Role="Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record_Log">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="Record_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -584,6 +620,7 @@
           <EntitySetMapping Name="Salary">
             <EntityTypeMapping TypeName="BeautySaloonModel.Salary">
               <MappingFragment StoreEntitySet="Salary">
+                <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

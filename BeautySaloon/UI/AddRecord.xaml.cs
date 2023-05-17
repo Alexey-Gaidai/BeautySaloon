@@ -123,5 +123,10 @@ namespace BeautySaloon.UI
         {
             this.DialogResult = false;
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
     }
 }

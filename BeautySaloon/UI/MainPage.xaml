@@ -22,16 +22,18 @@
         </StackPanel>
 
         <!-- DataGrid -->
-        <DataGrid Grid.Row="1" Name="RecordLogDataGrid" ItemsSource="{Binding Record_Log}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" Name="RecordLogDataGrid" ItemsSource="{Binding Records}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
                 <DataGridTextColumn Header="Дата" Binding="{Binding Date}" />
                 <DataGridTextColumn Header="Время" Binding="{Binding Time}" />
-                <DataGridTextColumn Header="ID клиента" Binding="{Binding Client_Services.Client_ID}" />
-                <DataGridTextColumn Header="ID Услуги" Binding="{Binding Client_Services.Service_ID}" />
-                <DataGridTextColumn Header="ID мастера" Binding="{Binding Master_ID}" />
-                <DataGridTextColumn Header="Тип оплаты" Binding="{Binding Payment_Type}" />
-                <DataGridTextColumn Header="Стоимость материалов" Binding="{Binding Material_Cost}" />
+                <DataGridTextColumn Header="Имя клиента" Binding="{Binding ClientName}" />
+                <DataGridTextColumn Header="Номер клиента" Binding="{Binding ClientPhone}" />
+                <DataGridTextColumn Header="Название Услуги" Binding="{Binding ServiceName}" />
+                <DataGridTextColumn Header="Мастер" Binding="{Binding MasterName}" />
+                <DataGridTextColumn Header="Тип оплаты" Binding="{Binding PaymentType}" />
+                <DataGridTextColumn Header="Стоимость услуги" Binding="{Binding ServiceCost}" />
+                <DataGridTextColumn Header="Стоимость материалов" Binding="{Binding MaterialCost}" />
                 <DataGridTextColumn Header="Примечание" Binding="{Binding Note}" />
             </DataGrid.Columns>
         </DataGrid>

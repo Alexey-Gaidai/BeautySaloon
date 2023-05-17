@@ -1,4 +1,5 @@
 ﻿using BeautySaloon.Data;
+using BeautySaloon.Model;
 using BeautySaloon.UI.Clients;
 using BeautySaloon.UI.Consumables;
 using BeautySaloon.UI.Masters;
@@ -19,6 +20,9 @@ namespace BeautySaloon.UI
     /// </summary>
     public partial class MainPage : Page
     {
+        List<Data.Clients> clients;
+        List<Data.Masters> masters;
+        List<Data.Services> services;
         public MainPage()
         {
             InitializeComponent();
@@ -29,11 +33,15 @@ namespace BeautySaloon.UI
         {
             try
             {
+                clients = AppConnect.SaloonDB.Clients.ToList();
+                masters = AppConnect.SaloonDB.Masters.ToList();
+                services = AppConnect.SaloonDB.Services.ToList();
+
+                List<Records> records = GetRecords();
                 //очистка data grid view
                 RecordLogDataGrid.ItemsSource = null;
                 RecordLogDataGrid.CanUserAddRows = false;
                 // загрузка данных из базы данных
-                var records = AppConnect.SaloonDB.Record_Log.ToList();
                 RecordLogDataGrid.ItemsSource = records;
             }
             catch (Exception ex)
@@ -41,6 +49,43 @@ namespace BeautySaloon.UI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private List<Records> GetRecords()
+        {
+            List<Records> records = new List<Records>();
+
+            try
+            {
+                var query = from log in AppConnect.SaloonDB.Record_Log
+                            join clientService in AppConnect.SaloonDB.Client_Services on log.Client_Service_ID equals clientService.ID
+                            join client in AppConnect.SaloonDB.Clients on clientService.Client_ID equals client.ID
+                            join service in AppConnect.SaloonDB.Services on clientService.Service_ID equals service.ID
+                            join master in AppConnect.SaloonDB.Masters on log.Master_ID equals master.ID
+                            select new Records
+                            {
+                                ID = log.ID,
+                                Date = log.Date,
+                                Time = log.Time,
+                                ClientName = client.Name,
+                                ClientPhone = client.Phone_Number,
+                                ServiceName = service.Service_Name,
+                                MasterName = master.Name,
+                                PaymentType = log.Payment_Type,
+                                ServiceCost = service.Service_Cost,
+                                MaterialCost = log.Material_Cost,
+                                Note = log.Note
+                            };
+
+                records = query.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return records;
+        }
+
         //
         private void AddRecord_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -96,7 +141,7 @@ namespace BeautySaloon.UI
             int id;
             if (RecordLogDataGrid.SelectedItems.Count != 0 && RecordLogDataGrid.SelectedItems.Count < 2)
             {
-                id = (RecordLogDataGrid.SelectedItem as Record_Log).ID;
+                id = (RecordLogDataGrid.SelectedItem as Records).ID;
             }
             else
             {

@@ -21,6 +21,10 @@ namespace BeautySaloon.UI
     public partial class EditRecord : Window
     {
         private Record_Log record;
+        private List<Data.Clients> clients;
+        private List<Data.Masters> masters;
+        private List<Data.Services> services;
+
         public EditRecord()
         {
             InitializeComponent();
@@ -29,22 +33,47 @@ namespace BeautySaloon.UI
         {
             record = _record;
             InitializeComponent();
-            PaymentTypeComboBox.Items.Add("Cash");
-            PaymentTypeComboBox.Items.Add("Debit Card");
+            InitLists();
+            InitComboBoxes();
+            
             Init();
         }
 
-        // инициализация полей и текстбоксов
-        private void Init()
+        private void InitLists()
+        {
+            try
+            {
+                masters = AppConnect.SaloonDB.Masters.ToList();
+                clients = AppConnect.SaloonDB.Clients.ToList();
+                services = AppConnect.SaloonDB.Services.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void InitComboBoxes()
+        {
+            PaymentTypeComboBox.Items.Add("Cash");
+            PaymentTypeComboBox.Items.Add("Debit Card");
+            PaymentTypeComboBox.SelectedValue = PaymentTypeComboBox.Items[0];
+            ClientComboBox.ItemsSource = clients;
+            MasterComboBox.ItemsSource = masters;
+            ServiceComboBox.ItemsSource = services;
+        }
+
+    // инициализация полей и текстбоксов
+    private void Init()
         {
             try
             {
                 Client_Services client_Services = new Client_Services();
                 client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
                 IdTextBox.Text = record.ID.ToString();
-                ClientIdTextBox.Text = client_Services.Client_ID.ToString();
-                ServiceIdTextBox.Text = client_Services.Service_ID.ToString();
-                MasterIdTextBox.Text = record.Master_ID.ToString();
+                ClientComboBox.SelectedItem = clients.Find(c => c.ID == client_Services.Client_ID);
+                ServiceComboBox.SelectedItem = services.Find(s => s.ID == client_Services.Service_ID);
+                MasterComboBox.SelectedItem = masters.Find(m => m.ID == record.Master_ID);
                 DateDatePicker.Text = record.Date.ToString();
                 TimeTextBox.Text = record.Time.ToString();
                 PaymentTypeComboBox.SelectedValue = record.Payment_Type.ToString();
@@ -65,11 +94,17 @@ namespace BeautySaloon.UI
                 // получение записи из базы данных
                 Record_Log record = AppConnect.SaloonDB.Record_Log.Find(int.Parse(IdTextBox.Text));
                 Client_Services client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
+
+                Data.Clients selectedClient = ClientComboBox.SelectedItem as Data.Clients;
+                Data.Services selectedservice = ServiceComboBox.SelectedItem as Data.Services;
+                Data.Masters selectedMaster = MasterComboBox.SelectedItem as Data.Masters;
+
                 // изменение записи
-                client_Services.Client_ID = int.Parse(ClientIdTextBox.Text);
-                client_Services.Service_ID = int.Parse(ServiceIdTextBox.Text);
+                client_Services.Client_ID = selectedClient.ID;
+                client_Services.Service_ID = selectedservice.ID;
                 record.Date = DateTime.Parse(DateDatePicker.Text);
                 record.Time = TimeSpan.Parse(TimeTextBox.Text);
+                record.Master_ID = selectedMaster.ID;
                 record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
                 record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                 record.Note = NoteTextBox.Text;

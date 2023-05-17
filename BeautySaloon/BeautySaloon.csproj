@@ -70,6 +70,7 @@
     <Compile Include="Data\sp_helpdiagrams_Result.cs">
       <DependentUpon>SaloonDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Records.cs" />
     <Compile Include="UI\AddRecord.xaml.cs">
       <DependentUpon>AddRecord.xaml</DependentUpon>
     </Compile>

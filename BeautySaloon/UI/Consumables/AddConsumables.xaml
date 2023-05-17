@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Consumables"
         mc:Ignorable="d"
-         Title="Добавить расходный материал" Height="200" Width="400">
+         Title="Добавить расходный материал" Height="210" Width="400">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

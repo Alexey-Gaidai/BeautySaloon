@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI"
         mc:Ignorable="d"
-        Title="EditRecord" Height="320" Width="400">
+        Title="Редактировать запись" Height="340" Width="400">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

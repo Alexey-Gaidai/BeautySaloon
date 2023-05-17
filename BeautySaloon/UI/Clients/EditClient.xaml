@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Clients"
         mc:Ignorable="d"
-               Title="Редактировать клиента" Height="200" Width="350">
+               Title="Редактировать клиента" Height="210" Width="350">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

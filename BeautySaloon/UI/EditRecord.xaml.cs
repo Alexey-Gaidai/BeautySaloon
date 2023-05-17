@@ -41,7 +41,6 @@ namespace BeautySaloon.UI
             {
                 Client_Services client_Services = new Client_Services();
                 client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
-
                 IdTextBox.Text = record.ID.ToString();
                 ClientIdTextBox.Text = client_Services.Client_ID.ToString();
                 ServiceIdTextBox.Text = client_Services.Service_ID.ToString();

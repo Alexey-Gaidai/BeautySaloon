@@ -85,7 +85,14 @@ namespace BeautySaloon.UI.Salary
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
-            SalaryDataGrid.ItemsSource = CalcSalaries();
+            if (startDatePicker.Text != "" && endDatePicker.Text != "")
+            {
+                SalaryDataGrid.ItemsSource = CalcSalaries();
+            }
+            else
+            {
+                MessageBox.Show("Укажите даты!");
+            }
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -95,7 +102,14 @@ namespace BeautySaloon.UI.Salary
 
         private void Calc_Button_Click(object sender, RoutedEventArgs e)
         {
-            SalaryDataGrid.ItemsSource = CalcSalaries();
+            if(startDatePicker.Text != "" && endDatePicker.Text != "")
+            {
+                SalaryDataGrid.ItemsSource = CalcSalaries();
+            } 
+            else
+            {
+                MessageBox.Show("Укажите даты!");
+            }
         }
     }
 }

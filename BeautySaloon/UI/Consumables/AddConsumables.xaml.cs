@@ -42,8 +42,7 @@ namespace BeautySaloon.UI.Consumables
                     Date_Added = DateTime.Now,
                 };
                 // добавление услуги в базу данных
-                AppConnect.SaloonDB.Consumables.Add(consumable);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Consumables.AddConsumable(consumable);
                 // закрытие окна
                 DialogResult = true;
             }

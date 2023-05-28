@@ -53,9 +53,8 @@ namespace BeautySaloon.UI.Consumables
         {
             try
             {
-                Data.Consumable_Type type = AppConnect.SaloonDB.Consumable_Type.Find(int.Parse(typeIDTextBox.Text));
                 type.Name = typeNameTextBox.Text;
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Consumable_Type.UpdateConsumableType(type);
                 this.DialogResult = true;
             }
             catch (Exception ex)

@@ -30,7 +30,7 @@ namespace BeautySaloon.UI.Consumables
         public EditConsumable(Data.Consumables _consumable)
         {
             consumable = _consumable;
-            types = AppConnect.SaloonDB.Consumable_Type.ToList();//AppConnect.SaloonDB.Consumable_Type.Where(t => t.ID == consumable.Type_ID).FirstOrDefault();
+            types = AppConnect.SaloonDB.Consumable_Type.ToList();
             InitializeComponent();
             Init();
         }
@@ -57,13 +57,12 @@ namespace BeautySaloon.UI.Consumables
         {
             try
             {
-                Data.Consumables consumable = AppConnect.SaloonDB.Consumables.Find(int.Parse(IDTextBox.Text));
                 consumable.Type_ID = types.Find(t => t.Name == TypeComboBox.Text).ID;
                 consumable.Model = ModelTextBox.Text;
                 consumable.Brand = BrandTextBox.Text;
                 consumable.Quantity = Convert.ToInt32(QuantityTextBox.Text);
                 consumable.Date_Added = DatePicker.SelectedDate.Value;
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Consumables.UpdateConsumable(consumable);
                 this.DialogResult = true;
             }
             catch (Exception ex)

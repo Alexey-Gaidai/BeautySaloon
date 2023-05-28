@@ -36,8 +36,7 @@ namespace BeautySaloon.UI.Services
                     Service_Cost = Convert.ToDecimal(CostTextBox.Text)
                 };
                 // добавление услуги в базу данных
-                AppConnect.SaloonDB.Services.Add(service);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Services.AddService(service);
                 // закрытие окна
                 DialogResult = true;
             }

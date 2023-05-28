@@ -11,7 +11,9 @@ namespace BeautySaloon.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+    using System.Windows;
+
     public partial class Record_Log
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,5 +35,65 @@ namespace BeautySaloon.Data
         public virtual Masters Masters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salary> Salary { get; set; }
+
+        public static void AddRecordLog(Record_Log recordLog)
+        {
+            try
+            {
+                AppConnect.SaloonDB.Record_Log.Add(recordLog);
+                AppConnect.SaloonDB.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод обновления записи о событии
+        public static void UpdateRecordLog(Record_Log recordLog)
+        {
+            try
+            {
+                var existingRecordLog = AppConnect.SaloonDB.Record_Log.Find(recordLog.ID);
+                var salaryRecord = AppConnect.SaloonDB.Salary.Where(s => s.Record_ID == existingRecordLog.ID).FirstOrDefault();
+                if (existingRecordLog != null)
+                {
+                    // Обновление свойств записи о событии
+                    existingRecordLog.Date = recordLog.Date;
+                    existingRecordLog.Time = recordLog.Time;
+                    existingRecordLog.Client_Service_ID = recordLog.Client_Service_ID;
+                    existingRecordLog.Master_ID = recordLog.Master_ID;
+                    existingRecordLog.Payment_Type = recordLog.Payment_Type;
+                    existingRecordLog.Material_Cost = recordLog.Material_Cost;
+                    existingRecordLog.Note = recordLog.Note;
+                    salaryRecord.Material_Cost = recordLog.Material_Cost;
+                    Data.Salary.UpdateSalary(salaryRecord);
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод удаления записи о событии
+        public static void DeleteRecordLog(int id)
+        {
+            try
+            {
+                var recordLog = AppConnect.SaloonDB.Record_Log.Find(id);
+                if (recordLog != null)
+                {
+                    Data.Salary.DeleteSalary(recordLog.ID);
+                    AppConnect.SaloonDB.Record_Log.Remove(recordLog);
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

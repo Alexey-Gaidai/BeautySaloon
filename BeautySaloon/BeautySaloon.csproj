@@ -116,7 +116,7 @@
     <Compile Include="UI\Salary\PageSalary.xaml.cs">
       <DependentUpon>PageSalary.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Salary\Salaries.cs" />
+    <Compile Include="Model\Salaries.cs" />
     <Compile Include="UI\Services\AddService.xaml.cs">
       <DependentUpon>AddService.xaml</DependentUpon>
     </Compile>

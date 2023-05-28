@@ -45,11 +45,10 @@ namespace BeautySaloon.UI.Clients
         {
             try
             {
-                Data.Clients client = AppConnect.SaloonDB.Clients.Find(int.Parse(IDTextBox.Text));
                 client.Name = NameTextBox.Text;
                 client.Phone_Number = PhoneNumberTextBox.Text;
                 client.Note = NoteTextBox.Text;
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Clients.UpdateClient(client);
                 this.DialogResult = true;
             }
             catch (Exception ex)

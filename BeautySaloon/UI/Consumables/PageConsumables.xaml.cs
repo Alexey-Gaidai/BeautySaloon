@@ -107,10 +107,8 @@ namespace BeautySaloon.UI.Consumables
                     MessageBox.Show("Выберите материал!");
                     return;
                 }
-                var consumable = AppConnect.SaloonDB.Consumables.Find(id);
                 // удаление записи из базы данных
-                AppConnect.SaloonDB.Consumables.Remove(consumable);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Consumables.DeleteConsumable(id);
                 // обновление data grid view
                 LoadConsumables();
                 MessageBox.Show("Удалено!");
@@ -185,10 +183,8 @@ namespace BeautySaloon.UI.Consumables
                     MessageBox.Show("Выберите тип!");
                     return;
                 }
-                var type = AppConnect.SaloonDB.Consumable_Type.Find(id);
                 // удаление записи из базы данных
-                AppConnect.SaloonDB.Consumable_Type.Remove(type);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Consumable_Type.DeleteConsumableType(id);
                 // обновление data grid view
                 LoadConsumables();
                 MessageBox.Show("Удалено!");

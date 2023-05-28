@@ -35,8 +35,7 @@ namespace BeautySaloon.UI.Consumables
                     Name = typeNameTextBox.Text,
                 };
                 // добавление услуги в базу данных
-                AppConnect.SaloonDB.Consumable_Type.Add(type);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Consumable_Type.AddConsumableType(type);
                 // закрытие окна
                 DialogResult = true;
             }

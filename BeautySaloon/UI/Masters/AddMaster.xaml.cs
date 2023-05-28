@@ -29,15 +29,14 @@ namespace BeautySaloon.UI.Masters
         {
             try
             {
-                // создание новой услуги
+                // создание нового мастера
                 Data.Masters master = new Data.Masters
                 {
                     Name = NameTextBox.Text,
                     Note = NoteTextBox.Text
                 };
-                // добавление услуги в базу данных
-                AppConnect.SaloonDB.Masters.Add(master);
-                AppConnect.SaloonDB.SaveChanges();
+                // добавление мастера в базу данных
+                Data.Masters.AddMaster(master);
                 // закрытие окна
                 DialogResult = true;
             }

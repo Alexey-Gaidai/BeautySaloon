@@ -11,7 +11,9 @@ namespace BeautySaloon.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+    using System.Windows;
+
     public partial class Clients
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,5 +29,69 @@ namespace BeautySaloon.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client_Services> Client_Services { get; set; }
+
+        public static void AddClient(Clients client)
+        {
+            try
+            {
+                AppConnect.SaloonDB.Clients.Add(client);
+                AppConnect.SaloonDB.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void UpdateClient(Clients client)
+        {
+            try
+            {
+                var existingClient = AppConnect.SaloonDB.Clients.Find(client.ID);
+                if (existingClient != null)
+                {
+                    // обновление свойств клиента
+                    existingClient.Name = client.Name;
+                    existingClient.Phone_Number = client.Phone_Number;
+                    existingClient.Note = client.Note;
+
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void DeleteClient(int id)
+        {
+            try
+            {
+                var client = AppConnect.SaloonDB.Clients.Find(id);
+                if (client != null)
+                {
+                    AppConnect.SaloonDB.Clients.Remove(client);
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static Clients GetClientByID(int id)
+        {
+            try
+            {
+                return AppConnect.SaloonDB.Clients.FirstOrDefault(c => c.ID == id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
     }
 }

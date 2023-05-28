@@ -45,6 +45,8 @@ namespace BeautySaloon.UI.Salary
         private List<Salaries> CalcSalaries()
         {
             List<Salaries> salaries = new List<Salaries>();
+            DateTime startDate = startDatePicker.SelectedDate.Value;
+            DateTime endDate = endDatePicker.SelectedDate.Value;
 
             // Получите данные из базы данных и рассчитайте зарплаты
 
@@ -52,7 +54,7 @@ namespace BeautySaloon.UI.Salary
             foreach (Data.Masters master in Masters)
             {
                 // Получите записи зарплаты из базы данных для данного мастера
-                List<Data.Salary> salaryRecords = GetSalaryRecordsForMaster(master.ID);
+                List<Data.Salary> salaryRecords = Data.Salary.GetSalaryRecordsByMasterId(startDate,endDate,master.ID);
 
                 // Рассчитайте общее количество услуг, стоимость материалов и зарплату мастера
                 int totalNumberOfServices = salaryRecords.Count();
@@ -74,13 +76,6 @@ namespace BeautySaloon.UI.Salary
             }
 
             return salaries;
-        }
-
-        private List<Data.Salary> GetSalaryRecordsForMaster(int iD)
-        {
-            DateTime startDate = startDatePicker.SelectedDate.Value;
-            DateTime endDate = endDatePicker.SelectedDate.Value;
-            return rawSalaries.Where(s => s.Master_ID == iD && s.Date <= endDate && s.Date >= startDate).ToList();
         }
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)

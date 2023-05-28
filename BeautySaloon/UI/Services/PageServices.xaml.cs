@@ -98,6 +98,11 @@ namespace BeautySaloon.UI.Services
 
         private void ServiceDelete_Button_Click(object sender, RoutedEventArgs e)
         {
+            NewMethod();
+        }
+
+        private void NewMethod()
+        {
             try
             {
                 // поиск записи по id
@@ -111,10 +116,8 @@ namespace BeautySaloon.UI.Services
                     MessageBox.Show("Выберите запись!");
                     return;
                 }
-                var service = AppConnect.SaloonDB.Services.Find(id);
                 // удаление записи из базы данных
-                AppConnect.SaloonDB.Services.Remove(service);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Services.DeleteService(id);
                 // обновление data grid view
                 LoadServices();
                 MessageBox.Show("Удалено!");

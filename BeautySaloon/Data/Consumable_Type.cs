@@ -11,7 +11,8 @@ namespace BeautySaloon.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows;
+
     public partial class Consumable_Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,5 +26,56 @@ namespace BeautySaloon.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Consumables> Consumables { get; set; }
+
+        public static void AddConsumableType(Consumable_Type type)
+        {
+            try
+            {
+                AppConnect.SaloonDB.Consumable_Type.Add(type);
+                AppConnect.SaloonDB.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод изменения типа расходного материала
+        public static void UpdateConsumableType(Consumable_Type type)
+        {
+            try
+            {
+                var existingType = AppConnect.SaloonDB.Consumable_Type.Find(type.ID);
+                if (existingType != null)
+                {
+                    // Обновление свойств типа расходного материала
+                    existingType.Name = type.Name;
+
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод удаления типа расходного материала
+        public static void DeleteConsumableType(int id)
+        {
+            try
+            {
+                var type = AppConnect.SaloonDB.Consumable_Type.Find(id);
+                if (type != null)
+                {
+                    AppConnect.SaloonDB.Consumable_Type.Remove(type);
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

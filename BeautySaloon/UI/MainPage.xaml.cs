@@ -120,12 +120,8 @@ namespace BeautySaloon.UI
                     MessageBox.Show("Выберите запись!");
                     return;
                 }
-                var record = AppConnect.SaloonDB.Record_Log.Find(id);
-                var salary = AppConnect.SaloonDB.Salary.Where(s => s.Record_ID == record.ID).FirstOrDefault();
+                Data.Record_Log.DeleteRecordLog(id);
                 // удаление записи из базы данных
-                AppConnect.SaloonDB.Salary.Remove(salary);
-                AppConnect.SaloonDB.Record_Log.Remove(record);
-                AppConnect.SaloonDB.SaveChanges();
                 // обновление data grid view
                 LoadRecords();
                 MessageBox.Show("Удалено!");

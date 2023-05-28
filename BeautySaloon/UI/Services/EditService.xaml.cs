@@ -45,10 +45,9 @@ namespace BeautySaloon.UI.Services
         {
             try
             {
-                Data.Services service = AppConnect.SaloonDB.Services.Find(int.Parse(ServiceIDTextBox.Text));
                 service.Service_Cost = decimal.Parse(ServiceCostTextBox.Text);
                 service.Service_Name = ServiceNameTextBox.Text;
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Services.UpdateService(service);
                 this.DialogResult = true;
             }
             catch (Exception ex)

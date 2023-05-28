@@ -45,10 +45,10 @@ namespace BeautySaloon.UI.Masters
         {
             try
             {
-                Data.Masters master = AppConnect.SaloonDB.Masters.Find(int.Parse(IDTextBox.Text));
                 master.Name =  NameTextBox.Text;
                 master.Note = NoteTextBox.Text;
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Masters.UpdateMaster(master);
+
                 this.DialogResult = true;
             }
             catch (Exception ex)

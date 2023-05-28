@@ -11,7 +11,8 @@ namespace BeautySaloon.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows;
+
     public partial class Services
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,5 +30,57 @@ namespace BeautySaloon.Data
         public virtual ICollection<Client_Services> Client_Services { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salary> Salary { get; set; }
+
+        public static void AddService(Services service)
+        {
+            try
+            {
+                AppConnect.SaloonDB.Services.Add(service);
+                AppConnect.SaloonDB.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод изменения услуги
+        public static void UpdateService(Services service)
+        {
+            try
+            {
+                var existingService = AppConnect.SaloonDB.Services.Find(service.ID);
+                if (existingService != null)
+                {
+                    // Обновление свойств услуги
+                    existingService.Service_Name = service.Service_Name;
+                    existingService.Service_Cost = service.Service_Cost;
+
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод удаления услуги
+        public static void DeleteService(int id)
+        {
+            try
+            {
+                var service = AppConnect.SaloonDB.Services.Find(id);
+                if (service != null)
+                {
+                    AppConnect.SaloonDB.Services.Remove(service);
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -37,8 +37,7 @@ namespace BeautySaloon.UI.Clients
                     Note = NoteTextBox.Text
                 };
                 // добавление услуги в базу данных
-                AppConnect.SaloonDB.Clients.Add(client);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Clients.AddClient(client);
                 // закрытие окна
                 DialogResult = true;
             }

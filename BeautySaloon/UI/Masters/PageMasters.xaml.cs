@@ -61,10 +61,8 @@ namespace BeautySaloon.UI.Masters
                     MessageBox.Show("Выберите мастера!");
                     return;
                 }
-                var master = AppConnect.SaloonDB.Masters.Find(id);
                 // удаление записи из базы данных
-                AppConnect.SaloonDB.Masters.Remove(master);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Masters.DeleteMaster(id);
                 // обновление data grid view
                 LoadMasters();
                 MessageBox.Show("Удалено!");

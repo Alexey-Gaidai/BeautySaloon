@@ -11,7 +11,9 @@ namespace BeautySaloon.Data
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+    using System.Windows;
+
     public partial class Client_Services
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,5 +30,70 @@ namespace BeautySaloon.Data
         public virtual Services Services { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Record_Log> Record_Log { get; set; }
+
+        public static void AddClientService(Client_Services clientService)
+        {
+            try
+            {
+                AppConnect.SaloonDB.Client_Services.Add(clientService);
+                AppConnect.SaloonDB.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод изменения услуги клиента
+        public static void UpdateClientService(Client_Services clientService)
+        {
+            try
+            {
+                var existingClientService = AppConnect.SaloonDB.Client_Services.Find(clientService.ID);
+                if (existingClientService != null)
+                {
+                    // Обновление свойств услуги клиента
+                    existingClientService.Client_ID = clientService.Client_ID;
+                    existingClientService.Service_ID = clientService.Service_ID;
+
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Метод удаления услуги клиента
+        public static void DeleteClientService(int id)
+        {
+            try
+            {
+                var clientService = AppConnect.SaloonDB.Client_Services.Find(id);
+                if (clientService != null)
+                {
+                    AppConnect.SaloonDB.Client_Services.Remove(clientService);
+                    AppConnect.SaloonDB.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static Client_Services GetClientServicesByID(int id)
+        {
+            try
+            {
+                return AppConnect.SaloonDB.Client_Services.FirstOrDefault(c => c.ID == id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
     }
 }

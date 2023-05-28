@@ -105,10 +105,8 @@ namespace BeautySaloon.UI.Clients
                     MessageBox.Show("Выберите клиента!");
                     return;
                 }
-                var client = AppConnect.SaloonDB.Clients.Find(id);
                 // удаление записи из базы данных
-                AppConnect.SaloonDB.Clients.Remove(client);
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Clients.DeleteClient(id);
                 // обновление data grid view
                 LoadClients();
                 MessageBox.Show("Удалено!");

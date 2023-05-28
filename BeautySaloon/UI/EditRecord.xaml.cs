@@ -69,7 +69,7 @@ namespace BeautySaloon.UI
             try
             {
                 Client_Services client_Services = new Client_Services();
-                client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
+                client_Services = Data.Client_Services.GetClientServicesByID(record.Client_Service_ID);
                 IdTextBox.Text = record.ID.ToString();
                 ClientComboBox.SelectedItem = clients.Find(c => c.ID == client_Services.Client_ID);
                 ServiceComboBox.SelectedItem = services.Find(s => s.ID == client_Services.Service_ID);
@@ -92,8 +92,7 @@ namespace BeautySaloon.UI
             try
             {
                 // получение записи из базы данных
-                Record_Log record = AppConnect.SaloonDB.Record_Log.Find(int.Parse(IdTextBox.Text));
-                Client_Services client_Services = AppConnect.SaloonDB.Client_Services.Find(record.Client_Service_ID);
+                Client_Services client_Services = Data.Client_Services.GetClientServicesByID(record.Client_Service_ID);
 
                 Data.Clients selectedClient = ClientComboBox.SelectedItem as Data.Clients;
                 Data.Services selectedservice = ServiceComboBox.SelectedItem as Data.Services;
@@ -109,7 +108,7 @@ namespace BeautySaloon.UI
                 record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                 record.Note = NoteTextBox.Text;
                 // сохранение изменений
-                AppConnect.SaloonDB.SaveChanges();
+                Data.Record_Log.UpdateRecordLog(record);
                 // закрытие окна
                 this.DialogResult = true;
             }

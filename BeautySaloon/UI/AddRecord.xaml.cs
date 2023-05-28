@@ -77,8 +77,7 @@ namespace BeautySaloon.UI
 
                 if (selectedClient != null && selectedservice != null && selectedMaster != null && ClientComboBox.Text != "" && ServiceComboBox.Text != "" && MasterComboBox.Text != "" && DateDatePicker.Text != "" && TimeTextBox.Text != "" && PaymentTypeComboBox.SelectedValue != null && MaterialCostTextBox.Text != "" && PaymentTypeComboBox.SelectedValue != null)
                 {
-                    AppConnect.SaloonDB.Client_Services.Add(clientServices);
-                    AppConnect.SaloonDB.SaveChanges();
+                    Data.Client_Services.AddClientService(clientServices);
 
                     record.Date = DateDatePicker.SelectedDate.Value;
                     record.Time = TimeSpan.Parse(TimeTextBox.Text);
@@ -87,8 +86,7 @@ namespace BeautySaloon.UI
                     record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
                     record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                     record.Note = NoteTextBox.Text;
-                    AppConnect.SaloonDB.Record_Log.Add(record);
-                    AppConnect.SaloonDB.SaveChanges();
+                    Data.Record_Log.AddRecordLog(record);
 
 
                     salary.Master_ID = selectedMaster.ID;
@@ -103,8 +101,7 @@ namespace BeautySaloon.UI
                     salary.Master_Salary = masterSalary;
                     salary.Salon_Revenue = saloonRevenue;
 
-                    AppConnect.SaloonDB.Salary.Add(salary);
-                    AppConnect.SaloonDB.SaveChanges();
+                    Data.Salary.AddSalary(salary);
 
                     this.DialogResult = true;
                 }

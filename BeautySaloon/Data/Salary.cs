@@ -50,12 +50,16 @@ namespace BeautySaloon.Data
                 if (existingSalary != null)
                 {
                     // Обновление свойств заработной платы
+                    decimal cost = AppConnect.SaloonDB.Services.Where(x => x.ID == salary.Service_ID).Select(x => x.Service_Cost).FirstOrDefault();
+                    decimal revenue = cost - salary.Material_Cost;
+                    decimal masterSalary = revenue * 0.5m;
+                    decimal saloonRevenue = revenue - masterSalary;
                     existingSalary.Master_ID = salary.Master_ID;
                     existingSalary.Date = salary.Date;
                     existingSalary.Service_ID = salary.Service_ID;
                     existingSalary.Material_Cost = salary.Material_Cost;
-                    existingSalary.Master_Salary = salary.Master_Salary;
-                    existingSalary.Salon_Revenue = salary.Salon_Revenue;
+                    existingSalary.Master_Salary = masterSalary;
+                    existingSalary.Salon_Revenue = saloonRevenue;
                     existingSalary.Record_ID = salary.Record_ID;
 
                     AppConnect.SaloonDB.SaveChanges();

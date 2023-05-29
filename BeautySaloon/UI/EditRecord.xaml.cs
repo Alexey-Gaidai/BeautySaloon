@@ -77,7 +77,6 @@ namespace BeautySaloon.UI
                 DateDatePicker.Text = record.Date.ToString();
                 TimeTextBox.Text = record.Time.ToString();
                 PaymentTypeComboBox.SelectedValue = record.Payment_Type.ToString();
-                MaterialCostTextBox.Text = record.Material_Cost.ToString();
                 NoteTextBox.Text = record.Note.ToString();
             }
             catch(Exception ex)
@@ -105,10 +104,10 @@ namespace BeautySaloon.UI
                 record.Time = TimeSpan.Parse(TimeTextBox.Text);
                 record.Master_ID = selectedMaster.ID;
                 record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
-                record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                 record.Note = NoteTextBox.Text;
+                decimal materialCost = decimal.Parse(MaterialCostTextBox.Text);
                 // сохранение изменений
-                Data.Record_Log.UpdateRecordLog(record);
+                Data.Record_Log.UpdateRecordLog(record, materialCost);
                 // закрытие окна
                 this.DialogResult = true;
             }

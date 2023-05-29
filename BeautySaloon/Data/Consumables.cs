@@ -24,7 +24,6 @@ namespace BeautySaloon.Data
     
         public virtual Consumable_Type Consumable_Type { get; set; }
 
-        // Метод добавления расходного материала
         public static void AddConsumable(Consumables consumable)
         {
             try

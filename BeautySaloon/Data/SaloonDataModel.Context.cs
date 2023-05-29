@@ -15,10 +15,10 @@ namespace BeautySaloon.Data
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class SaloonEntities : DbContext
+    public partial class BeautySaloonEntities : DbContext
     {
-        public SaloonEntities()
-            : base("name=SaloonEntities")
+        public BeautySaloonEntities()
+            : base("name=BeautySaloonEntities")
         {
         }
     
@@ -33,9 +33,9 @@ namespace BeautySaloon.Data
         public virtual DbSet<Consumables> Consumables { get; set; }
         public virtual DbSet<Masters> Masters { get; set; }
         public virtual DbSet<Record_Log> Record_Log { get; set; }
-        public virtual DbSet<Salary> Salary { get; set; }
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Salary> Salary { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

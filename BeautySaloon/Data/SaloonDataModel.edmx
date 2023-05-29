@@ -58,7 +58,6 @@
           <Property Name="Client_Service_ID" Type="int" Nullable="false" />
           <Property Name="Master_ID" Type="int" Nullable="false" />
           <Property Name="Payment_Type" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Material_Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Salary">
@@ -92,7 +91,7 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK__Client_Se__Clien__236943A5">
+        <Association Name="FK__Client_Se__Clien__6FB49575">
           <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +103,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client_Se__Servi__245D67DE">
+        <Association Name="FK__Client_Se__Servi__70A8B9AE">
           <End Role="Services" Type="Self.Services" Multiplicity="1" />
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Consumabl__Type___1AD3FDA4">
+        <Association Name="FK__Consumabl__Type___671F4F74">
           <End Role="Consumable_Type" Type="Self.Consumable_Type" Multiplicity="1" />
           <End Role="Consumables" Type="Self.Consumables" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,7 +127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Record_Lo__Clien__2739D489">
+        <Association Name="FK__Record_Lo__Clien__73852659">
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="1" />
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +139,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Record_Lo__Maste__282DF8C2">
+        <Association Name="FK__Record_Lo__Maste__74794A92">
           <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +151,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Salary__Master_I__2BFE89A6">
+        <Association Name="FK__Salary__Master_I__7849DB76">
           <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
           <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +163,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Salary__Record_I__2CF2ADDF">
+        <Association Name="FK__Salary__Record_I__793DFFAF">
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="1" />
           <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,7 +175,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Salary__Service___2B0A656D">
+        <Association Name="FK__Salary__Service___7755B73D">
           <End Role="Services" Type="Self.Services" Multiplicity="1" />
           <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,35 +228,35 @@
           <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Client_Se__Clien__236943A5" Association="Self.FK__Client_Se__Clien__236943A5">
+          <AssociationSet Name="FK__Client_Se__Clien__6FB49575" Association="Self.FK__Client_Se__Clien__6FB49575">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Client_Services" EntitySet="Client_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client_Se__Servi__245D67DE" Association="Self.FK__Client_Se__Servi__245D67DE">
+          <AssociationSet Name="FK__Client_Se__Servi__70A8B9AE" Association="Self.FK__Client_Se__Servi__70A8B9AE">
             <End Role="Services" EntitySet="Services" />
             <End Role="Client_Services" EntitySet="Client_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__Consumabl__Type___1AD3FDA4" Association="Self.FK__Consumabl__Type___1AD3FDA4">
+          <AssociationSet Name="FK__Consumabl__Type___671F4F74" Association="Self.FK__Consumabl__Type___671F4F74">
             <End Role="Consumable_Type" EntitySet="Consumable_Type" />
             <End Role="Consumables" EntitySet="Consumables" />
           </AssociationSet>
-          <AssociationSet Name="FK__Record_Lo__Clien__2739D489" Association="Self.FK__Record_Lo__Clien__2739D489">
+          <AssociationSet Name="FK__Record_Lo__Clien__73852659" Association="Self.FK__Record_Lo__Clien__73852659">
             <End Role="Client_Services" EntitySet="Client_Services" />
             <End Role="Record_Log" EntitySet="Record_Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Record_Lo__Maste__282DF8C2" Association="Self.FK__Record_Lo__Maste__282DF8C2">
+          <AssociationSet Name="FK__Record_Lo__Maste__74794A92" Association="Self.FK__Record_Lo__Maste__74794A92">
             <End Role="Masters" EntitySet="Masters" />
             <End Role="Record_Log" EntitySet="Record_Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Master_I__2BFE89A6" Association="Self.FK__Salary__Master_I__2BFE89A6">
+          <AssociationSet Name="FK__Salary__Master_I__7849DB76" Association="Self.FK__Salary__Master_I__7849DB76">
             <End Role="Masters" EntitySet="Masters" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Record_I__2CF2ADDF" Association="Self.FK__Salary__Record_I__2CF2ADDF">
+          <AssociationSet Name="FK__Salary__Record_I__793DFFAF" Association="Self.FK__Salary__Record_I__793DFFAF">
             <End Role="Record_Log" EntitySet="Record_Log" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Service___2B0A656D" Association="Self.FK__Salary__Service___2B0A656D">
+          <AssociationSet Name="FK__Salary__Service___7755B73D" Association="Self.FK__Salary__Service___7755B73D">
             <End Role="Services" EntitySet="Services" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
@@ -273,9 +272,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Client_ID" Type="Int32" Nullable="false" />
           <Property Name="Service_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK__Client_Se__Clien__656C112C" FromRole="Client_Services" ToRole="Clients" />
-          <NavigationProperty Name="Services" Relationship="Self.FK__Client_Se__Servi__66603565" FromRole="Client_Services" ToRole="Services" />
-          <NavigationProperty Name="Record_Log" Relationship="Self.FK__Record_Lo__Clien__693CA210" FromRole="Client_Services" ToRole="Record_Log" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Client_Se__Clien__531856C7" FromRole="Client_Services" ToRole="Clients" />
+          <NavigationProperty Name="Services" Relationship="Self.FK__Client_Se__Servi__540C7B00" FromRole="Client_Services" ToRole="Services" />
+          <NavigationProperty Name="Record_Log" Relationship="Self.FK__Record_Lo__Clien__56E8E7AB" FromRole="Client_Services" ToRole="Record_Log" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -285,7 +284,7 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Client_Services" Relationship="Self.FK__Client_Se__Clien__656C112C" FromRole="Clients" ToRole="Client_Services" />
+          <NavigationProperty Name="Client_Services" Relationship="Self.FK__Client_Se__Clien__531856C7" FromRole="Clients" ToRole="Client_Services" />
         </EntityType>
         <EntityType Name="Consumable_Type">
           <Key>
@@ -293,7 +292,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Consumables" Relationship="Self.FK__Consumabl__Type___5CD6CB2B" FromRole="Consumable_Type" ToRole="Consumables" />
+          <NavigationProperty Name="Consumables" Relationship="Self.FK__Consumabl__Type___6166761E" FromRole="Consumable_Type" ToRole="Consumables" />
         </EntityType>
         <EntityType Name="Consumables">
           <Key>
@@ -305,7 +304,7 @@
           <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="Date_Added" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Consumable_Type" Relationship="Self.FK__Consumabl__Type___5CD6CB2B" FromRole="Consumables" ToRole="Consumable_Type" />
+          <NavigationProperty Name="Consumable_Type" Relationship="Self.FK__Consumabl__Type___6166761E" FromRole="Consumables" ToRole="Consumable_Type" />
         </EntityType>
         <EntityType Name="Masters">
           <Key>
@@ -314,8 +313,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Record_Log" Relationship="Self.FK__Record_Lo__Maste__6A30C649" FromRole="Masters" ToRole="Record_Log" />
-          <NavigationProperty Name="Salary" Relationship="Self.FK__Salary__Master_I__6E01572D" FromRole="Masters" ToRole="Salary" />
+          <NavigationProperty Name="Record_Log" Relationship="Self.FK__Record_Lo__Maste__57DD0BE4" FromRole="Masters" ToRole="Record_Log" />
+          <NavigationProperty Name="Salary" Relationship="BeautySaloonModel.FK__Salary__Master_I__7849DB76" FromRole="Masters" ToRole="Salary" />
         </EntityType>
         <EntityType Name="Record_Log">
           <Key>
@@ -327,27 +326,10 @@
           <Property Name="Client_Service_ID" Type="Int32" Nullable="false" />
           <Property Name="Master_ID" Type="Int32" Nullable="false" />
           <Property Name="Payment_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Material_Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Client_Services" Relationship="Self.FK__Record_Lo__Clien__693CA210" FromRole="Record_Log" ToRole="Client_Services" />
-          <NavigationProperty Name="Masters" Relationship="Self.FK__Record_Lo__Maste__6A30C649" FromRole="Record_Log" ToRole="Masters" />
-          <NavigationProperty Name="Salary" Relationship="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF" FromRole="Record_Log" ToRole="Salary" />
-        </EntityType>
-        <EntityType Name="Salary">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Master_ID" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Service_ID" Type="Int32" Nullable="false" />
-          <Property Name="Material_Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Master_Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Salon_Revenue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Masters" Relationship="Self.FK__Salary__Master_I__6E01572D" FromRole="Salary" ToRole="Masters" />
-          <NavigationProperty Name="Services" Relationship="Self.FK__Salary__Service___6D0D32F4" FromRole="Salary" ToRole="Services" />
-          <Property Name="Record_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Record_Log" Relationship="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF" FromRole="Salary" ToRole="Record_Log" />
+          <NavigationProperty Name="Client_Services" Relationship="Self.FK__Record_Lo__Clien__56E8E7AB" FromRole="Record_Log" ToRole="Client_Services" />
+          <NavigationProperty Name="Masters" Relationship="Self.FK__Record_Lo__Maste__57DD0BE4" FromRole="Record_Log" ToRole="Masters" />
+          <NavigationProperty Name="Salary" Relationship="BeautySaloonModel.FK__Salary__Record_I__793DFFAF" FromRole="Record_Log" ToRole="Salary" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -356,8 +338,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Service_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Service_Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Client_Services" Relationship="Self.FK__Client_Se__Servi__66603565" FromRole="Services" ToRole="Client_Services" />
-          <NavigationProperty Name="Salary" Relationship="Self.FK__Salary__Service___6D0D32F4" FromRole="Services" ToRole="Salary" />
+          <NavigationProperty Name="Client_Services" Relationship="Self.FK__Client_Se__Servi__540C7B00" FromRole="Services" ToRole="Client_Services" />
+          <NavigationProperty Name="Salary" Relationship="BeautySaloonModel.FK__Salary__Service___7755B73D" FromRole="Services" ToRole="Salary" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -369,7 +351,7 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK__Client_Se__Clien__656C112C">
+        <Association Name="FK__Client_Se__Clien__531856C7">
           <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +363,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Client_Se__Servi__66603565">
+        <Association Name="FK__Client_Se__Servi__540C7B00">
           <End Role="Services" Type="Self.Services" Multiplicity="1" />
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -393,7 +375,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Record_Lo__Clien__693CA210">
+        <Association Name="FK__Record_Lo__Clien__56E8E7AB">
           <End Role="Client_Services" Type="Self.Client_Services" Multiplicity="1" />
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -405,7 +387,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Consumabl__Type___5CD6CB2B">
+        <Association Name="FK__Consumabl__Type___6166761E">
           <End Role="Consumable_Type" Type="Self.Consumable_Type" Multiplicity="1" />
           <End Role="Consumables" Type="Self.Consumables" Multiplicity="*" />
           <ReferentialConstraint>
@@ -417,7 +399,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Record_Lo__Maste__6A30C649">
+        <Association Name="FK__Record_Lo__Maste__57DD0BE4">
           <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
           <End Role="Record_Log" Type="Self.Record_Log" Multiplicity="*" />
           <ReferentialConstraint>
@@ -429,65 +411,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Salary__Master_I__6E01572D">
-          <End Role="Masters" Type="Self.Masters" Multiplicity="1" />
-          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Masters">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Salary">
-              <PropertyRef Name="Master_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Salary__Service___6D0D32F4">
-          <End Role="Services" Type="Self.Services" Multiplicity="1" />
-          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Services">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Salary">
-              <PropertyRef Name="Service_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="SaloonEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BeautySaloonEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client_Services" EntityType="Self.Client_Services" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
           <EntitySet Name="Consumable_Type" EntityType="Self.Consumable_Type" />
           <EntitySet Name="Consumables" EntityType="Self.Consumables" />
           <EntitySet Name="Masters" EntityType="Self.Masters" />
           <EntitySet Name="Record_Log" EntityType="Self.Record_Log" />
-          <EntitySet Name="Salary" EntityType="Self.Salary" />
           <EntitySet Name="Services" EntityType="Self.Services" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK__Client_Se__Clien__656C112C" Association="Self.FK__Client_Se__Clien__656C112C">
+          <AssociationSet Name="FK__Client_Se__Clien__531856C7" Association="Self.FK__Client_Se__Clien__531856C7">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Client_Services" EntitySet="Client_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__Client_Se__Servi__66603565" Association="Self.FK__Client_Se__Servi__66603565">
+          <AssociationSet Name="FK__Client_Se__Servi__540C7B00" Association="Self.FK__Client_Se__Servi__540C7B00">
             <End Role="Services" EntitySet="Services" />
             <End Role="Client_Services" EntitySet="Client_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__Record_Lo__Clien__693CA210" Association="Self.FK__Record_Lo__Clien__693CA210">
+          <AssociationSet Name="FK__Record_Lo__Clien__56E8E7AB" Association="Self.FK__Record_Lo__Clien__56E8E7AB">
             <End Role="Client_Services" EntitySet="Client_Services" />
             <End Role="Record_Log" EntitySet="Record_Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Consumabl__Type___5CD6CB2B" Association="Self.FK__Consumabl__Type___5CD6CB2B">
+          <AssociationSet Name="FK__Consumabl__Type___6166761E" Association="Self.FK__Consumabl__Type___6166761E">
             <End Role="Consumable_Type" EntitySet="Consumable_Type" />
             <End Role="Consumables" EntitySet="Consumables" />
           </AssociationSet>
-          <AssociationSet Name="FK__Record_Lo__Maste__6A30C649" Association="Self.FK__Record_Lo__Maste__6A30C649">
+          <AssociationSet Name="FK__Record_Lo__Maste__57DD0BE4" Association="Self.FK__Record_Lo__Maste__57DD0BE4">
             <End Role="Masters" EntitySet="Masters" />
             <End Role="Record_Log" EntitySet="Record_Log" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Master_I__6E01572D" Association="Self.FK__Salary__Master_I__6E01572D">
+          <EntitySet Name="Salary" EntityType="BeautySaloonModel.Salary" />
+          <AssociationSet Name="FK__Salary__Master_I__7849DB76" Association="BeautySaloonModel.FK__Salary__Master_I__7849DB76">
             <End Role="Masters" EntitySet="Masters" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Salary__Service___6D0D32F4" Association="Self.FK__Salary__Service___6D0D32F4">
+          <AssociationSet Name="FK__Salary__Record_I__793DFFAF" Association="BeautySaloonModel.FK__Salary__Record_I__793DFFAF">
+            <End Role="Record_Log" EntitySet="Record_Log" />
+            <End Role="Salary" EntitySet="Salary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Salary__Service___7755B73D" Association="BeautySaloonModel.FK__Salary__Service___7755B73D">
             <End Role="Services" EntitySet="Services" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
@@ -521,23 +483,36 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK__Salary__Record_I__2CF2ADDF" Association="BeautySaloonModel.FK__Salary__Record_I__2CF2ADDF">
-            <End Role="Record_Log" EntitySet="Record_Log" />
-            <End Role="Salary" EntitySet="Salary" />
-          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <Association Name="FK__Salary__Record_I__2CF2ADDF">
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Master_ID" Type="Int32" Nullable="false" />
+          <Property Name="Service_ID" Type="Int32" Nullable="false" />
+          <Property Name="Record_ID" Type="Int32" Nullable="false" />
+          <Property Name="Material_Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Master_Salary" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Salon_Revenue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="Masters" Relationship="BeautySaloonModel.FK__Salary__Master_I__7849DB76" FromRole="Salary" ToRole="Masters" />
+          <NavigationProperty Name="Record_Log" Relationship="BeautySaloonModel.FK__Salary__Record_I__793DFFAF" FromRole="Salary" ToRole="Record_Log" />
+          <NavigationProperty Name="Services" Relationship="BeautySaloonModel.FK__Salary__Service___7755B73D" FromRole="Salary" ToRole="Services" />
+        </EntityType>
+        <Association Name="FK__Salary__Master_I__7849DB76">
+          <End Type="BeautySaloonModel.Masters" Role="Masters" Multiplicity="1" />
+          <End Type="BeautySaloonModel.Salary" Role="Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masters">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="Master_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Salary__Record_I__793DFFAF">
           <End Type="BeautySaloonModel.Record_Log" Role="Record_Log" Multiplicity="1" />
           <End Type="BeautySaloonModel.Salary" Role="Salary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -549,12 +524,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Salary__Service___7755B73D">
+          <End Type="BeautySaloonModel.Services" Role="Services" Multiplicity="1" />
+          <End Type="BeautySaloonModel.Salary" Role="Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="Service_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище BeautySaloonModelContainer" CdmEntityContainer="SaloonEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BeautySaloonModelContainer" CdmEntityContainer="BeautySaloonEntities">
           <EntitySetMapping Name="Client_Services">
             <EntityTypeMapping TypeName="BeautySaloonModel.Client_Services">
               <MappingFragment StoreEntitySet="Client_Services">
@@ -612,22 +610,7 @@
                 <ScalarProperty Name="Client_Service_ID" ColumnName="Client_Service_ID" />
                 <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
                 <ScalarProperty Name="Payment_Type" ColumnName="Payment_Type" />
-                <ScalarProperty Name="Material_Cost" ColumnName="Material_Cost" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Salary">
-            <EntityTypeMapping TypeName="BeautySaloonModel.Salary">
-              <MappingFragment StoreEntitySet="Salary">
-                <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
-                <ScalarProperty Name="Material_Cost" ColumnName="Material_Cost" />
-                <ScalarProperty Name="Master_Salary" ColumnName="Master_Salary" />
-                <ScalarProperty Name="Salon_Revenue" ColumnName="Salon_Revenue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -648,6 +631,20 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salary">
+            <EntityTypeMapping TypeName="BeautySaloonModel.Salary">
+              <MappingFragment StoreEntitySet="Salary">
+                <ScalarProperty Name="Salon_Revenue" ColumnName="Salon_Revenue" />
+                <ScalarProperty Name="Master_Salary" ColumnName="Master_Salary" />
+                <ScalarProperty Name="Material_Cost" ColumnName="Material_Cost" />
+                <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+                <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+                <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

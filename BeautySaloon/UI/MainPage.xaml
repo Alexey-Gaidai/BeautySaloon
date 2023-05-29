@@ -33,7 +33,6 @@
                 <DataGridTextColumn Header="Мастер" Binding="{Binding MasterName}" />
                 <DataGridTextColumn Header="Тип оплаты" Binding="{Binding PaymentType}" />
                 <DataGridTextColumn Header="Стоимость услуги" Binding="{Binding ServiceCost}" />
-                <DataGridTextColumn Header="Стоимость материалов" Binding="{Binding MaterialCost}" />
                 <DataGridTextColumn Header="Примечание" Binding="{Binding Note}" />
             </DataGrid.Columns>
         </DataGrid>

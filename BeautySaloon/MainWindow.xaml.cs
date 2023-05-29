@@ -30,7 +30,7 @@ namespace BeautySaloon
         public MainWindow()
         {
             InitializeComponent();
-            AppConnect.SaloonDB = new SaloonEntities();
+            AppConnect.SaloonDB = new BeautySaloonEntities();
             AppFrame.frameMain = FrmMain;
             FrmMain.Navigate(new MainPage());
         }

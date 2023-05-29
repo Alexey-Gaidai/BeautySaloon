@@ -72,7 +72,6 @@ namespace BeautySaloon.UI
                                 MasterName = master.Name,
                                 PaymentType = log.Payment_Type,
                                 ServiceCost = service.Service_Cost,
-                                MaterialCost = log.Material_Cost,
                                 Note = log.Note
                             };
 

@@ -8,6 +8,6 @@ namespace BeautySaloon.Data
 {
     internal class AppConnect
     {
-        public static SaloonEntities SaloonDB;
+        public static BeautySaloonEntities SaloonDB;
     }
 }

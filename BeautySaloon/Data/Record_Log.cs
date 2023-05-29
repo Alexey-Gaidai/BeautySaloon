@@ -28,7 +28,6 @@ namespace BeautySaloon.Data
         public int Client_Service_ID { get; set; }
         public int Master_ID { get; set; }
         public string Payment_Type { get; set; }
-        public decimal Material_Cost { get; set; }
         public string Note { get; set; }
     
         public virtual Client_Services Client_Services { get; set; }
@@ -50,7 +49,7 @@ namespace BeautySaloon.Data
         }
 
         // Метод обновления записи о событии
-        public static void UpdateRecordLog(Record_Log recordLog)
+        public static void UpdateRecordLog(Record_Log recordLog, decimal materialCost)
         {
             try
             {
@@ -64,9 +63,10 @@ namespace BeautySaloon.Data
                     existingRecordLog.Client_Service_ID = recordLog.Client_Service_ID;
                     existingRecordLog.Master_ID = recordLog.Master_ID;
                     existingRecordLog.Payment_Type = recordLog.Payment_Type;
-                    existingRecordLog.Material_Cost = recordLog.Material_Cost;
                     existingRecordLog.Note = recordLog.Note;
-                    salaryRecord.Material_Cost = recordLog.Material_Cost;
+                    salaryRecord.Material_Cost = materialCost;
+                    salaryRecord.Service_ID = AppConnect.SaloonDB.Client_Services.Where(cs => cs.ID == recordLog.Client_Service_ID).FirstOrDefault().Service_ID;
+                    salaryRecord.Master_ID = recordLog.Master_ID;
                     Data.Salary.UpdateSalary(salaryRecord);
                     AppConnect.SaloonDB.SaveChanges();
                 }

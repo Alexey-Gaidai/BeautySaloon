@@ -17,17 +17,17 @@ namespace BeautySaloon.Data
     public partial class Salary
     {
         public int ID { get; set; }
-        public int Master_ID { get; set; }
         public System.DateTime Date { get; set; }
+        public int Master_ID { get; set; }
         public int Service_ID { get; set; }
+        public int Record_ID { get; set; }
         public decimal Material_Cost { get; set; }
         public decimal Master_Salary { get; set; }
         public decimal Salon_Revenue { get; set; }
-        public int Record_ID { get; set; }
     
         public virtual Masters Masters { get; set; }
-        public virtual Services Services { get; set; }
         public virtual Record_Log Record_Log { get; set; }
+        public virtual Services Services { get; set; }
 
         public static void AddSalary(Salary salary)
         {
@@ -95,5 +95,4 @@ namespace BeautySaloon.Data
                 .ToList();
         }
     }
-
 }

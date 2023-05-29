@@ -84,7 +84,6 @@ namespace BeautySaloon.UI
                     record.Client_Service_ID = clientServices.ID;
                     record.Master_ID = selectedMaster.ID;
                     record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
-                    record.Material_Cost = decimal.Parse(MaterialCostTextBox.Text);
                     record.Note = NoteTextBox.Text;
                     Data.Record_Log.AddRecordLog(record);
 

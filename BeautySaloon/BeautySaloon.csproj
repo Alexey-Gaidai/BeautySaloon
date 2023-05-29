@@ -64,10 +64,52 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\Clients.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Client_Services.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Consumables.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Consumable_Type.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Masters.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Record_Log.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Salary.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SaloonDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaloonDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SaloonDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SaloonDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaloonDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Services.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>SaloonDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SaloonDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
       <DependentUpon>SaloonDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Records.cs" />
@@ -136,48 +178,6 @@
     </Compile>
     <Compile Include="Data\AppConnect.cs" />
     <Compile Include="Data\AppFrame.cs" />
-    <Compile Include="Data\Clients.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Client_Services.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Consumables.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Consumable_Type.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Masters.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Record_Log.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Salary.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SaloonDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaloonDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SaloonDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SaloonDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaloonDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Services.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>SaloonDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -304,6 +304,5 @@
       <LastGenOutput>SaloonDataModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

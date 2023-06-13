@@ -66,11 +66,11 @@ namespace BeautySaloon.Data
         }
 
         // Метод удаления услуги клиента
-        public static void DeleteClientService(int id)
+        public static void DeleteClientService(int user_id)
         {
             try
             {
-                var clientService = AppConnect.SaloonDB.Client_Services.Find(id);
+                var clientService = AppConnect.SaloonDB.Client_Services.Where(cs => cs.Client_ID == user_id).FirstOrDefault();
                 if (clientService != null)
                 {
                     AppConnect.SaloonDB.Client_Services.Remove(clientService);

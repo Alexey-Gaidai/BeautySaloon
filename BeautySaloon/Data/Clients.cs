@@ -71,6 +71,7 @@ namespace BeautySaloon.Data
                 var client = AppConnect.SaloonDB.Clients.Find(id);
                 if (client != null)
                 {
+                    Data.Client_Services.DeleteClientService(id);
                     AppConnect.SaloonDB.Clients.Remove(client);
                     AppConnect.SaloonDB.SaveChanges();
                 }

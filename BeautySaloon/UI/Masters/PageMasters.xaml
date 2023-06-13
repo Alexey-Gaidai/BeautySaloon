@@ -11,15 +11,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Name="MastersAdd_Button" Content="Добавить" Margin="0 0 10 0" Padding="10" Click="MastersAdd_Button_Click"/>
-            <Button Name="MastersDelete_Button" Content="Удалить" Margin="0 0 10 0" Padding="10" Click="MastersDelete_Button_Click" />
-            <Button Name="MastersEdit_Button" Content="Редактировать" Margin="0 0 10 0" Padding="10" Click="MastersEdit_Button_Click" />
+            <Button Style="{StaticResource ButtonStyle}" Name="MastersAdd_Button" Content="Добавить" Margin="0 0 10 0" Padding="10" Click="MastersAdd_Button_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Name="MastersDelete_Button" Content="Удалить" Margin="0 0 10 0" Padding="10" Click="MastersDelete_Button_Click" />
+            <Button Style="{StaticResource ButtonStyle}" Name="MastersEdit_Button" Content="Редактировать" Margin="0 0 10 0" Padding="10" Click="MastersEdit_Button_Click" />
         </StackPanel>
-        <DataGrid Grid.Row="1" Margin="10" x:Name="MastersDataGrid"
+        <TextBlock Grid.Row="1" Name="Title" Text="Мастера:" FontSize="24" Background="#FFEFE6" Width="100px" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+        <DataGrid Grid.Row="2" Margin="10" x:Name="MastersDataGrid"
                   ItemsSource="{Binding Masters}"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -28,8 +30,8 @@
                 <DataGridTextColumn Header="Примечание" Binding="{Binding Note}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Назад" Margin="10" Padding="10" Click="Button_Click"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Style="{StaticResource NavigateButtonStyle}" Content="Назад" Margin="10" Padding="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Page>

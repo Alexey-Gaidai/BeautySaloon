@@ -7,22 +7,22 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
-
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="AddRecord_Button" Content="Добавить запись" Margin="10" Padding="10" Click="AddRecord_Button_Click" />
-            <Button Name="DeleteRecord_Button" Content="Удалить запись" Margin="10" Padding="10" Click="DeleteRecord_Button_Click" />
-            <Button Name="Editrecord_Button" Content="Редактировать запись" Margin="10" Padding="10" Click="Editrecord_Button_Click" />
+            <Button Name="AddRecord_Button" Style="{StaticResource ButtonStyle}" Content="Добавить запись" Margin="10" Padding="10" Click="AddRecord_Button_Click" />
+            <Button Name="DeleteRecord_Button" Style="{StaticResource ButtonStyle}" Content="Удалить запись" Margin="10" Padding="10" Click="DeleteRecord_Button_Click" />
+            <Button Name="Editrecord_Button" Style="{StaticResource ButtonStyle}" Content="Редактировать запись" Margin="10" Padding="10" Click="Editrecord_Button_Click" />
         </StackPanel>
-
+        <TextBlock Grid.Row="1" Name="Title" Text="Записи:" FontSize="24" Background="#FFEFE6" Width="100px" HorizontalAlignment="Left" Margin="20,0,0,0"/>
         <!-- DataGrid -->
-        <DataGrid Grid.Row="1" Name="RecordLogDataGrid" ItemsSource="{Binding Records}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="2" Margin="20" Name="RecordLogDataGrid" ItemsSource="{Binding Records}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
                 <DataGridTextColumn Header="Дата" Binding="{Binding Date}" />
@@ -38,12 +38,12 @@
         </DataGrid>
 
         <!-- Кнопки навигации -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="Consumables_Button" Content="Материалы" Margin="10" Padding="10" Click="Consumables_Button_Click" />
-            <Button Name="Services_Button" Content="Список услуг" Margin="10" Padding="10" Click="Services_Button_Click" />
-            <Button Name="Clients_Button" Content="Клиенты" Margin="10" Padding="10" Click="Clients_Button_Click" />
-            <Button Name="Masters_Button" Content="Мастера" Margin="10" Padding="10" Click="Masters_Button_Click" />
-            <Button Name="Salarys_Button" Content="Зарплаты" Margin="10" Padding="10" Click="Salarys_Button_Click" />
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="Consumables_Button" Style="{StaticResource NavigateButtonStyle}" Content="Материалы" Margin="10" Padding="10" Click="Consumables_Button_Click" />
+            <Button Name="Services_Button" Style="{StaticResource NavigateButtonStyle}" Content="Список услуг" Margin="10" Padding="10" Click="Services_Button_Click" />
+            <Button Name="Clients_Button" Style="{StaticResource NavigateButtonStyle}" Content="Клиенты" Margin="10" Padding="10" Click="Clients_Button_Click" />
+            <Button Name="Masters_Button" Style="{StaticResource NavigateButtonStyle}" Content="Мастера" Margin="10" Padding="10" Click="Masters_Button_Click" />
+            <Button Name="Salarys_Button"  Style="{StaticResource NavigateButtonStyle}" Content="Зарплата" Margin="10" Padding="10" Click="Salarys_Button_Click" />
         </StackPanel>
     </Grid>
 </Page>

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI"
         mc:Ignorable="d"
-        Title="Добавить запись" SizeToContent="Height" Width="400">
+        Title="Добавить запись" SizeToContent="Height" Width="400"
+        Background="#E9CDBB">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -27,13 +28,16 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Дата:" />
-        <DatePicker Grid.Row="1" Grid.Column="1" Name="DateDatePicker" />
+        <DatePicker Grid.Row="1" Grid.Column="1" Name="DateDatePicker" SelectedDateChanged="DateDatePicker_SelectedDateChanged" />
 
-        <Label Grid.Row="2" Grid.Column="0" Content="Время:" />
-        <TextBox Grid.Row="2" Grid.Column="1" Name="TimeTextBox" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Мастер:" />
+        <ComboBox Grid.Row="2" Grid.Column="1" Name="MasterComboBox" ItemsSource="{Binding Masters}" DisplayMemberPath="Name" SelectionChanged="MasterComboBox_SelectionChanged"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Content="Номер клиента:" />
-        <ComboBox  Grid.Row="3" Grid.Column="1" Name="ClientComboBox" ItemsSource="{Binding Clients}">
+        <Label Grid.Row="3" Grid.Column="0" Content="Время:" />
+        <ComboBox Grid.Row="3" Grid.Column="1" Name="TimeComboBox" />
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Номер клиента:" />
+        <ComboBox  Grid.Row="4" Grid.Column="1" Name="ClientComboBox" ItemsSource="{Binding Clients}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -44,11 +48,9 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="4" Grid.Column="0" Content="Услуга:" />
-        <ComboBox Grid.Row="4" Grid.Column="1" Name="ServiceComboBox" ItemsSource="{Binding Services}" DisplayMemberPath="Service_Name"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Услуга:" />
+        <ComboBox Grid.Row="5" Grid.Column="1" Name="ServiceComboBox" ItemsSource="{Binding Services}" DisplayMemberPath="Service_Name"/>
 
-        <Label Grid.Row="5" Grid.Column="0" Content="Мастер:" />
-        <ComboBox Grid.Row="5" Grid.Column="1" Name="MasterComboBox" ItemsSource="{Binding Masters}" DisplayMemberPath="Name"/>
 
         <Label Grid.Row="6" Grid.Column="0" Content="Тип оплаты:" />
         <ComboBox Grid.Row="6" Grid.Column="1" Name="PaymentTypeComboBox" />
@@ -60,8 +62,8 @@
         <TextBox Grid.Row="8" Grid.Column="1" Name="NoteTextBox" />
 
         <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Добавить" Margin="5" Padding="10" Width="100" Click="Button_Click"/>
-            <Button Content="Отменить" Margin="5" Padding="10" Width="100" Click="Button_Click_2"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Добавить" Margin="5" Padding="10" Width="100" Click="Button_Click"/>
+            <Button Style="{StaticResource NavigateButtonStyle}" Content="Отменить" Margin="5" Padding="10" Width="100" Click="Button_Click_2"/>
         </StackPanel>
     </Grid>
 </Window>

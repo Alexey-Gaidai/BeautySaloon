@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:BeautySaloon"
         mc:Ignorable="d"
         Title="BeautySaloonPRG" Height="550" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/img/background.jpg" Stretch="UniformToFill" />
+    </Window.Background>
     <Grid>
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="100*" />
             <RowDefinition Height="550*"/>
@@ -14,8 +19,9 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <!-- Текстовый блок заголовка -->
-            <TextBlock  Name="programTitle" Text="Внутренняя программа салона" FontSize="28"/>
+            <TextBlock  Name="programTitle" Text="Внутренняя программа салона" FontSize="28" Background="#FFEFE6"/>
         </StackPanel>
+        
 
         <!-- Нижняя строка сетки Grid -->
         <Frame x:Name="FrmMain" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="FrmMain_Navigated" />

@@ -168,6 +168,10 @@
     <Compile Include="UI\Services\PageServices.xaml.cs">
       <DependentUpon>PageServices.xaml</DependentUpon>
     </Compile>
+    <Page Include="DictionaryStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -303,6 +307,9 @@
       <DependentUpon>SaloonDataModel.edmx</DependentUpon>
       <LastGenOutput>SaloonDataModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\img\background.jpg" />
+    <SplashScreen Include="Resources\img\8568608.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

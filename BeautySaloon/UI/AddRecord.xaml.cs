@@ -1,4 +1,5 @@
 ﻿using BeautySaloon.Data;
+using BeautySaloon.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -57,6 +58,40 @@ namespace BeautySaloon.UI
             ServiceComboBox.ItemsSource = services;
         }
 
+        private void fillTimeComboBox()
+        {
+            var selectedMaster = (MasterComboBox.SelectedItem as Data.Masters).Name;
+
+            List<TimeSpan> availableTimes = new List<TimeSpan>();
+
+            TimeSpan startTime = new TimeSpan(10, 0, 0);
+            TimeSpan endTime = new TimeSpan(20, 0, 0);
+            TimeSpan interval = TimeSpan.FromMinutes(30);
+
+            for (TimeSpan time = startTime; time <= endTime; time += interval)
+            {
+                availableTimes.Add(time);
+            }
+            if (DateDatePicker.Text == "")
+            {
+                MessageBox.Show("Выберите дату!");
+            }
+            else
+            {
+                var recordsForThisDate = AppConnect.SaloonDB.Record_Log.Where(x => x.Date == DateDatePicker.SelectedDate.Value).ToList();
+                MessageBox.Show(recordsForThisDate.Count.ToString());
+                foreach (var item in recordsForThisDate)
+                {
+                    if (availableTimes.Contains(item.Time) && selectedMaster == item.Masters.Name)
+                    {
+                        availableTimes.Remove(item.Time);
+                    }
+                }
+
+                TimeComboBox.ItemsSource = availableTimes;
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -75,12 +110,12 @@ namespace BeautySaloon.UI
                     clientServices.Service_ID = selectedservice.ID;
                 }
 
-                if (selectedClient != null && selectedservice != null && selectedMaster != null && ClientComboBox.Text != "" && ServiceComboBox.Text != "" && MasterComboBox.Text != "" && DateDatePicker.Text != "" && TimeTextBox.Text != "" && PaymentTypeComboBox.SelectedValue != null && MaterialCostTextBox.Text != "" && PaymentTypeComboBox.SelectedValue != null)
+                if (selectedClient != null && selectedservice != null && selectedMaster != null && ClientComboBox.Text != "" && ServiceComboBox.Text != "" && MasterComboBox.Text != "" && DateDatePicker.Text != "" && TimeComboBox.Text != "" && PaymentTypeComboBox.SelectedValue != null && MaterialCostTextBox.Text != "" && PaymentTypeComboBox.SelectedValue != null)
                 {
                     Data.Client_Services.AddClientService(clientServices);
 
                     record.Date = DateDatePicker.SelectedDate.Value;
-                    record.Time = TimeSpan.Parse(TimeTextBox.Text);
+                    record.Time = TimeSpan.Parse(TimeComboBox.Text);
                     record.Client_Service_ID = clientServices.ID;
                     record.Master_ID = selectedMaster.ID;
                     record.Payment_Type = PaymentTypeComboBox.SelectedValue.ToString();
@@ -124,6 +159,21 @@ namespace BeautySaloon.UI
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void MasterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            fillTimeComboBox();
+        }
+
+        private void DateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+           if(MasterComboBox.SelectedItem != null)
+            {
+                fillTimeComboBox();
+            }
         }
     }
 }

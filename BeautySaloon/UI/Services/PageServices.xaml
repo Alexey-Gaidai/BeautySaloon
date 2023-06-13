@@ -11,15 +11,23 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-            <Button Name="ServiceAdd_Button" Content="Добавить" Margin="10" Padding="10" Click="ServiceAdd_Button_Click" />
-            <Button Name="ServiceEdit_Button" Content="Редактировать" Margin="10" Padding="10" Click="ServiceEdit_Button_Click" />
-            <Button Name="ServiceDelete_Button" Content="Удалить" Margin="10" Padding="10" Click="ServiceDelete_Button_Click" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" Grid.ColumnSpan="4">
+            <Button Name="ServiceAdd_Button" Style="{StaticResource ButtonStyle}" Content="Добавить" Margin="10" Padding="10" Click="ServiceAdd_Button_Click" />
+            <Button Name="ServiceEdit_Button" Style="{StaticResource ButtonStyle}" Content="Редактировать" Margin="10" Padding="10" Click="ServiceEdit_Button_Click" />
+            <Button Name="ServiceDelete_Button" Style="{StaticResource ButtonStyle}" Content="Удалить" Margin="10" Padding="10" Click="ServiceDelete_Button_Click" />
         </StackPanel>
-        <DataGrid Grid.Row="1" x:Name="ServicesDataGrid" AutoGenerateColumns="False" 
+        <TextBlock Grid.Row="1" Grid.Column="1" Name="Title" Text="Услуги:" FontSize="24" Background="#FFEFE6" Width="90px" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+        <DataGrid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="ServicesDataGrid" AutoGenerateColumns="False" Margin="20" 
               ItemsSource="{Binding Services}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}"  Width="40"/>
@@ -27,8 +35,8 @@
                 <DataGridTextColumn Header="Стоимость" Binding="{Binding Service_Cost}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Назад" Margin="10" Padding="10" Click="Button_Click"/>
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Назад" Style="{StaticResource NavigateButtonStyle}" Margin="10" Padding="10" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Page>

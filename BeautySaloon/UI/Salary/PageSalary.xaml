@@ -35,8 +35,8 @@
                 <DataGridTextColumn Header="Прибыль салона" Binding="{Binding SalonRevenue}" Width="*"/>
             </DataGrid.Columns>
          </DataGrid>
-        <Button Name="Back_Button" Content="Назад" Margin="10" Padding="10" Grid.Row="2" Grid.Column="2" Click="Back_Button_Click"/>
-        <Button Name="Calc_Button" Content="Рассчитать" Margin="10" Padding="10" Grid.Row="2" Grid.Column="1" Click="Calc_Button_Click"/>
-        <Button Name="Update_Button" Content="Обновить" Margin="10" Padding="10" Grid.Row="2" Grid.Column="0" Click="Update_Button_Click"/>
+        <Button Style="{StaticResource NavigateButtonStyle}" Name="Back_Button" Content="Назад" Margin="10" Padding="10" Grid.Row="2" Grid.Column="2" Click="Back_Button_Click"/>
+        <Button Name="Calc_Button" Style="{StaticResource ButtonStyle}" Content="Рассчитать" Margin="10" Padding="10" Grid.Row="2" Grid.Column="1" Click="Calc_Button_Click"/>
+        <Button Name="Update_Button" Style="{StaticResource ButtonStyle}" Content="Обновить" Margin="10" Padding="10" Grid.Row="2" Grid.Column="0" Click="Update_Button_Click"/>
     </Grid>
 </Page>

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Services"
         mc:Ignorable="d"
-        Title="Редактировать услугу" Height="190" Width="400">
+        Title="Редактировать услугу" Height="190" Width="400"
+        Background="#E9CDBB">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,8 +29,8 @@
         <TextBox Grid.Row="2" Grid.Column="1" Name="ServiceCostTextBox" />
 
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Сохранить" Margin="5" Padding="10" Width="100" Click="Button_Click"/>
-            <Button Content="Отменить" Margin="5" Padding="10" Width="100" Click="Button_Click_1"/>
+            <Button Content="Сохранить" Style="{StaticResource ButtonStyle}" Margin="5" Padding="10" Width="100" Click="Button_Click"/>
+            <Button Content="Отменить" Style="{StaticResource NavigateButtonStyle}" Margin="5" Padding="10" Width="100" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </Window>

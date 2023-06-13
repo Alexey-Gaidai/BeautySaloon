@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Consumables"
         mc:Ignorable="d"
-        Title="Редактировать тип" Height="160" Width="400">
+        Title="Редактировать тип" Height="160" Width="400"
+        Background="#E9CDBB">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,8 +27,8 @@
         <TextBox Name="typeNameTextBox" Grid.Row="1" Grid.Column="1" />
 
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Name="SaveType_Button" Content="Сохранить" Margin="5" Padding="10" Width="100" Click="AddType_Button_Click" />
-            <Button Name="Cancel_Button" Content="Отмена" Margin="5" Padding="10" Width="100" Click="Cancel_Button_Click" />
+            <Button Name="SaveType_Button" Style="{StaticResource ButtonStyle}" Content="Сохранить" Margin="5" Padding="10" Width="100" Click="AddType_Button_Click" />
+            <Button Name="Cancel_Button" Style="{StaticResource NavigateButtonStyle}" Content="Отмена" Margin="5" Padding="10" Width="100" Click="Cancel_Button_Click" />
         </StackPanel>
     </Grid>
 </Window>

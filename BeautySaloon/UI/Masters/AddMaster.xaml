@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySaloon.UI.Masters"
         mc:Ignorable="d"
-        Title="Добавить Мастера" Height="160" Width="340">
+        Title="Добавить Мастера" Height="160" Width="340"
+        Background="#E9CDBB">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,8 +26,8 @@
         <TextBox Grid.Row="1" Grid.Column="1" Name="NoteTextBox" />
 
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Name="AddMaster_Button" Content="Добавить" Margin="5" Padding="10" Width="100" Click="AddMaster_Click"/>
-            <Button Name="Cancel_Button" Content="Отменить" Margin="5" Padding="10" Width="100" Click="Cancel_Click"/>
+            <Button Name="AddMaster_Button" Content="Добавить" Style="{StaticResource ButtonStyle}" Margin="5" Padding="10" Width="100" Click="AddMaster_Click"/>
+            <Button Name="Cancel_Button" Content="Отменить" Style="{StaticResource NavigateButtonStyle}" Margin="5" Padding="10" Width="100" Click="Cancel_Click"/>
         </StackPanel>
     </Grid>
 </Window>

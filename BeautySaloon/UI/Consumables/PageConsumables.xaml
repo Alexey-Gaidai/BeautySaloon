@@ -11,13 +11,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Data Grid Views for Consumables and Types -->
-        <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Row="2" Margin="10">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -26,17 +28,17 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" Grid.Column="0">
-                <Button Name="AddConsumable_Button" Content="Добавить" Margin="5" Padding="10" Click="AddConsumable_Button_Click" />
-                <Button Name="EditConsumable_Button" Content="Редактировать" Margin="5" Padding="10" Click="EditConsumable_Button_Click"/>
-                <Button Name="DeleteConsumable_Button" Content="Удалить" Margin="5" Padding="10" Click="DeleteConsumable_Button_Click" />
+                <Button Style="{StaticResource ButtonStyle}" Name="AddConsumable_Button" Content="Добавить" Margin="5" Padding="10" Click="AddConsumable_Button_Click" />
+                <Button  Style="{StaticResource ButtonStyle}" Name="EditConsumable_Button" Content="Редактировать" Margin="5" Padding="10" Click="EditConsumable_Button_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Name="DeleteConsumable_Button" Content="Удалить" Margin="5" Padding="10" Click="DeleteConsumable_Button_Click" />
             </StackPanel>
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" Grid.Column="1">
-                <Button Name="AddType_Button" Content="Добавить" Margin="5" Padding="10" Click="AddType_Button_Click" />
-                <Button Name="EditType_Button" Content="Редактировать" Margin="5" Padding="10" Click="EditType_Button_Click"/>
-                <Button Name="DeleteType_Button" Content="Удалить" Margin="5" Padding="10" Click="DeleteType_Button_Click" />
+                <Button Style="{StaticResource ButtonStyle}" Name="AddType_Button" Content="Добавить" Margin="5" Padding="10" Click="AddType_Button_Click" />
+                <Button Style="{StaticResource ButtonStyle}" Name="EditType_Button" Content="Редактировать" Margin="5" Padding="10" Click="EditType_Button_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Name="DeleteType_Button" Content="Удалить" Margin="5" Padding="10" Click="DeleteType_Button_Click" />
             </StackPanel>
-            <!-- Consumables Data Grid View -->
-            <DataGrid Grid.Column="0" x:Name="ConsumablesDataGrid" Margin="10" AutoGenerateColumns="False" Grid.Row="1" 
+            <TextBlock Grid.Row="1" Grid.Column="0" Name="Title" Text="Материалы:" FontSize="24" Background="#FFEFE6" Width="140px" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+            <DataGrid Grid.Column="0" x:Name="ConsumablesDataGrid" Margin="10" AutoGenerateColumns="False" Grid.Row="2" 
                       ItemsSource="{Binding Consumables}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}"  Width="40"/>
@@ -47,9 +49,9 @@
                     <DataGridTextColumn Header="Дата добавления" Binding="{Binding Date_Added}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
-
+            <TextBlock Grid.Row="1" Grid.Column="1" Name="TitleType" Text="Типы материалов:" FontSize="24" Background="#FFEFE6" Width="210px" HorizontalAlignment="Left" Margin="20,0,0,0"/>
             <!-- Types Data Grid View -->
-            <DataGrid Grid.Column="1" x:Name="TypesDataGrid" Margin="10" AutoGenerateColumns="False" Grid.Row="1" 
+            <DataGrid Grid.Column="1" x:Name="TypesDataGrid" Margin="10" AutoGenerateColumns="False" Grid.Row="2" 
                       ItemsSource="{Binding Types}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40"/>
@@ -59,8 +61,8 @@
         </Grid>
 
         <!-- Back Button -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Name="BackButton" Content="Назад" Margin="5" Padding="10" Click="BackButton_Click"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Style="{StaticResource NavigateButtonStyle}" Name="BackButton" Content="Назад" Margin="5" Padding="10" Click="BackButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

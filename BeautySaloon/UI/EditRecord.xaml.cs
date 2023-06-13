@@ -1,6 +1,7 @@
 ﻿using BeautySaloon.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Model;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,6 +77,7 @@ namespace BeautySaloon.UI
                 MasterComboBox.SelectedItem = masters.Find(m => m.ID == record.Master_ID);
                 DateDatePicker.Text = record.Date.ToString();
                 TimeTextBox.Text = record.Time.ToString();
+                MaterialCostTextBox.Text = AppConnect.SaloonDB.Salary.Where(s => s.Record_ID == record.ID).FirstOrDefault().Material_Cost.ToString();
                 PaymentTypeComboBox.SelectedValue = record.Payment_Type.ToString();
                 NoteTextBox.Text = record.Note.ToString();
             }

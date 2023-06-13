@@ -38,6 +38,7 @@ namespace BeautySaloon.UI
                 services = AppConnect.SaloonDB.Services.ToList();
 
                 List<Records> records = GetRecords();
+                MessageBox.Show(records[0].Date.ToString());
                 //очистка data grid view
                 RecordLogDataGrid.ItemsSource = null;
                 RecordLogDataGrid.CanUserAddRows = false;
@@ -64,7 +65,7 @@ namespace BeautySaloon.UI
                             select new Records
                             {
                                 ID = log.ID,
-                                Date = log.Date,
+                                Date = log.Date.ToString(),
                                 Time = log.Time,
                                 ClientName = client.Name,
                                 ClientPhone = client.Phone_Number,

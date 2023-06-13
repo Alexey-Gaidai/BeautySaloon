@@ -79,7 +79,6 @@ namespace BeautySaloon.UI
             else
             {
                 var recordsForThisDate = AppConnect.SaloonDB.Record_Log.Where(x => x.Date == DateDatePicker.SelectedDate.Value).ToList();
-                MessageBox.Show(recordsForThisDate.Count.ToString());
                 foreach (var item in recordsForThisDate)
                 {
                     if (availableTimes.Contains(item.Time) && selectedMaster == item.Masters.Name)

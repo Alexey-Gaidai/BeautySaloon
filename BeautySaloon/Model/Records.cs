@@ -9,7 +9,7 @@ namespace BeautySaloon.Model
     internal class Records
     {
         public int ID { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public TimeSpan Time { get; set; }
         public string ClientName { get; set; }
         public string ClientPhone { get; set; }

@@ -39,7 +39,7 @@
 
         <Label Grid.Row="4" Grid.Column="0" Content="Количество:" />
         <TextBox Grid.Row="4" Grid.Column="1" Name="QuantityTextBox" />
-        <Label Grid.Row="5" Grid.Column="0" Content="Количество:" />
+        <Label Grid.Row="5" Grid.Column="0" Content="Дата поступления:" />
         <DatePicker Grid.Row="5" Grid.Column="1" Name="DatePicker"/>
 
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

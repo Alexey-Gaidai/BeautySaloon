@@ -41,7 +41,7 @@ namespace BeautySaloon.UI.Consumables
             {
                 IDTextBox.Text = consumable.ID.ToString();
                 TypeComboBox.ItemsSource = types;
-                TypeComboBox.SelectedValue = types.Find(t => t.ID == consumable.Type_ID);
+                TypeComboBox.SelectedItem = types.Find(t => t.Name == consumable.Consumable_Type.Name);
                 ModelTextBox.Text = consumable.Model;
                 BrandTextBox.Text = consumable.Brand;
                 QuantityTextBox.Text = consumable.Quantity.ToString();
